@@ -1,0 +1,6 @@
+<odoo>
+	<data>
+		<menuitem id="cdn_pesantren_top_menu" name="Cdn pesantren" sequence="20" web_icon="cdn_pesantren,static/description/icon.png" />
+		<menuitem id="cdn_pesantren_sub_menu" name="Cdn pesantren" sequence="40" parent="cdn_pesantren_top_menu" web_icon="cdn_pesantren,static/description/icon.png" />
+	</data>
+</odoo>

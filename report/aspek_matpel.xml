@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- report qweb view -->
+        <report id="report_cdn_aspek_matpel_menu" string="Cdn - Aspek matpel"
+         model="cdn.aspek_matpel" report_type="qweb-pdf" 
+         file="cdn.aspek_matpel"  name="cdn_pesantren.cdn_aspek_matpel_report" />
+
+        <!-- document template -->
+        <template id="cdn_pesantren.cdn_aspek_matpel_report_document" >
+            <t t-call="web.external_layout">
+                <t t-set="doc" t-value="doc.with_context({'lang': lang})"/>
+                <div class="page">
+                    <h2>
+                        Aspek matpel: <span t-field="doc.name"/>
+                    </h2>
+                    <div class="row mt32 mb32">
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Nilai kkm</strong>
+                            <p class="m-0" t-field="doc.nilai_kkm" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Nilai max</strong>
+                            <p class="m-0" t-field="doc.nilai_max" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Nilai min</strong>
+                            <p class="m-0" t-field="doc.nilai_min" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Matpel</strong>
+                            <p class="m-0" t-field="doc.matpel_id"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="oe_structure"/>
+            </t>
+        </template>
+
+        <!-- main template -->
+        <template id="cdn_pesantren.cdn_aspek_matpel_report">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-set="lang" t-value="doc.create_uid.lang"/>
+                    <t t-call="cdn_pesantren.cdn_aspek_matpel_report_document" />
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>

@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- report qweb view -->
+        <report id="report_cdn_siswa_menu" string="Cdn - Siswa"
+         model="cdn.siswa" report_type="qweb-pdf" 
+         file="cdn.siswa"  name="cdn_pesantren.cdn_siswa_report" />
+
+        <!-- document template -->
+        <template id="cdn_pesantren.cdn_siswa_report_document" >
+            <t t-call="web.external_layout">
+                <t t-set="doc" t-value="doc.with_context({'lang': lang})"/>
+                <div class="page">
+                    <h2>
+                        Siswa: <span t-field="doc.name"/>
+                    </h2>
+                    <div class="row mt32 mb32">
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>No daftar</strong>
+                            <p class="m-0" t-field="doc.no_daftar" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Tgl daftar</strong>
+                            <p class="m-0" t-field="doc.tgl_daftar" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Program daftar</strong>
+                            <p class="m-0" t-field="doc.program_daftar" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Nama panggilan</strong>
+                            <p class="m-0" t-field="doc.nama_panggilan" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Jns kel</strong>
+                            <p class="m-0" t-field="doc.jns_kel" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Tmp lahir</strong>
+                            <p class="m-0" t-field="doc.tmp_lahir" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Tgl lahir</strong>
+                            <p class="m-0" t-field="doc.tgl_lahir" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Nik</strong>
+                            <p class="m-0" t-field="doc.nik" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Status dlm kel</strong>
+                            <p class="m-0" t-field="doc.status_dlm_kel" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Cita cita</strong>
+                            <p class="m-0" t-field="doc.cita_cita" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Hobi</strong>
+                            <p class="m-0" t-field="doc.hobi" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Bhs sehari</strong>
+                            <p class="m-0" t-field="doc.bhs_sehari" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Gol darah</strong>
+                            <p class="m-0" t-field="doc.gol_darah" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Tinggi badan</strong>
+                            <p class="m-0" t-field="doc.tinggi_badan" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Berat badan</strong>
+                            <p class="m-0" t-field="doc.berat_badan" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Agama siswa</strong>
+                            <p class="m-0" t-field="doc.agama_siswa" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Alamat siswa</strong>
+                            <p class="m-0" t-field="doc.alamat_siswa" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Rt rw</strong>
+                            <p class="m-0" t-field="doc.rt_rw" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Kota asal</strong>
+                            <p class="m-0" t-field="doc.kota_asal" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>No telp rumah</strong>
+                            <p class="m-0" t-field="doc.no_telp_rumah" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Email siswa</strong>
+                            <p class="m-0" t-field="doc.email_siswa" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Kodepos</strong>
+                            <p class="m-0" t-field="doc.kodepos" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Tinggal bersama</strong>
+                            <p class="m-0" t-field="doc.tinggal_bersama" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Sakit tbc pernah</strong>
+                            <p class="m-0" t-field="doc.sakit_tbc_pernah" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Sakit tbc ket</strong>
+                            <p class="m-0" t-field="doc.sakit_tbc_ket" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Sakit asma pernah</strong>
+                            <p class="m-0" t-field="doc.sakit_asma_pernah" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Sakit asma ket</strong>
+                            <p class="m-0" t-field="doc.sakit_asma_ket" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Sakit hepatitisb pernah</strong>
+                            <p class="m-0" t-field="doc.sakit_hepatitisb_pernah" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Sakit hepatitisb ket</strong>
+                            <p class="m-0" t-field="doc.sakit_hepatitisb_ket" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Sakit cacar pernah</strong>
+                            <p class="m-0" t-field="doc.sakit_cacar_pernah" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Sakit cacar ket</strong>
+                            <p class="m-0" t-field="doc.sakit_cacar_ket" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Sakit lain pernah</strong>
+                            <p class="m-0" t-field="doc.sakit_lain_pernah" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Sakit lain ket</strong>
+                            <p class="m-0" t-field="doc.sakit_lain_ket" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Sekolah asal</strong>
+                            <p class="m-0" t-field="doc.sekolah_asal" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Nisn</strong>
+                            <p class="m-0" t-field="doc.nisn" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Alamat sekolah asal</strong>
+                            <p class="m-0" t-field="doc.alamat_sekolah_asal" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Kepsek sekolah asal</strong>
+                            <p class="m-0" t-field="doc.kepsek_sekolah_asal" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Telp sekolah asal</strong>
+                            <p class="m-0" t-field="doc.telp_sekolah_asal" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Status sekolah asal</strong>
+                            <p class="m-0" t-field="doc.status_sekolah_asal" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Prestasi di sekolah</strong>
+                            <p class="m-0" t-field="doc.prestasi_di_sekolah" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Raport 4sd 1</strong>
+                            <p class="m-0" t-field="doc.raport_4sd_1" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Raport 4sd 2</strong>
+                            <p class="m-0" t-field="doc.raport_4sd_2" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Raport 5sd 1</strong>
+                            <p class="m-0" t-field="doc.raport_5sd_1" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Raport 5sd 2</strong>
+                            <p class="m-0" t-field="doc.raport_5sd_2" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Raport 6sd 1</strong>
+                            <p class="m-0" t-field="doc.raport_6sd_1" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Baca quran</strong>
+                            <p class="m-0" t-field="doc.baca_quran" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Ayah nama</strong>
+                            <p class="m-0" t-field="doc.ayah_nama" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Ayah tmp lahir</strong>
+                            <p class="m-0" t-field="doc.ayah_tmp_lahir" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Ayah tgl lahir</strong>
+                            <p class="m-0" t-field="doc.ayah_tgl_lahir" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Ayah warganegara</strong>
+                            <p class="m-0" t-field="doc.ayah_warganegara" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Ayah telp</strong>
+                            <p class="m-0" t-field="doc.ayah_telp" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Ayah email</strong>
+                            <p class="m-0" t-field="doc.ayah_email" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Ayah alamat kantor</strong>
+                            <p class="m-0" t-field="doc.ayah_alamat_kantor" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Ayah penghasilan</strong>
+                            <p class="m-0" t-field="doc.ayah_penghasilan" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Ayah pendidikan</strong>
+                            <p class="m-0" t-field="doc.ayah_pendidikan" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Ibu nama</strong>
+                            <p class="m-0" t-field="doc.ibu_nama" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Ibu tmp lahir</strong>
+                            <p class="m-0" t-field="doc.ibu_tmp_lahir" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Ibu tgl lahir</strong>
+                            <p class="m-0" t-field="doc.ibu_tgl_lahir" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Ibu warganegara</strong>
+                            <p class="m-0" t-field="doc.ibu_warganegara" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Ibu telp</strong>
+                            <p class="m-0" t-field="doc.ibu_telp" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Ibu email</strong>
+                            <p class="m-0" t-field="doc.ibu_email" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Ibu pekerjaan</strong>
+                            <p class="m-0" t-field="doc.ibu_pekerjaan" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Ibu alamat kantor</strong>
+                            <p class="m-0" t-field="doc.ibu_alamat_kantor" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Ibu penghasilan</strong>
+                            <p class="m-0" t-field="doc.ibu_penghasilan" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Ibu pendidikan</strong>
+                            <p class="m-0" t-field="doc.ibu_pendidikan" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Wali nama</strong>
+                            <p class="m-0" t-field="doc.wali_nama" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Wali tmp lahir</strong>
+                            <p class="m-0" t-field="doc.wali_tmp_lahir" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Wali tgl lahir</strong>
+                            <p class="m-0" t-field="doc.wali_tgl_lahir" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Wali warganegara</strong>
+                            <p class="m-0" t-field="doc.wali_warganegara" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Wali telp</strong>
+                            <p class="m-0" t-field="doc.wali_telp" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Wali email</strong>
+                            <p class="m-0" t-field="doc.wali_email" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Wali pekerjaan</strong>
+                            <p class="m-0" t-field="doc.wali_pekerjaan" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Wali alamat kantor</strong>
+                            <p class="m-0" t-field="doc.wali_alamat_kantor" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Wali penghasilan</strong>
+                            <p class="m-0" t-field="doc.wali_penghasilan" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Wali pendidikan</strong>
+                            <p class="m-0" t-field="doc.wali_pendidikan" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Institusi tahfidz</strong>
+                            <p class="m-0" t-field="doc.institusi_tahfidz" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Hafalan sejak kelas</strong>
+                            <p class="m-0" t-field="doc.hafalan_sejak_kelas" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Motivasi menghafal</strong>
+                            <p class="m-0" t-field="doc.motivasi_menghafal" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Pilihan tahfidz</strong>
+                            <p class="m-0" t-field="doc.pilihan_tahfidz" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Foto</strong>
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Propinsi</strong>
+                            <p class="m-0" t-field="doc.propinsi_id"/>
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Ayah pekerjaan</strong>
+                            <p class="m-0" t-field="doc.ayah_pekerjaan_id"/>
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Kelas paralel</strong>
+                            <p class="m-0" t-field="doc.kelas_paralel_id"/>
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Berkass</strong>
+                            <p class="m-0" t-field="doc.berkas_ids"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="oe_structure"/>
+                <h2>Keuangan siswas</h2>
+                <table class="table table-sm o_main_table" name="keuangan_siswa_ids_table">
+                    <thead>
+                        <tr>
+                            <td>Name</td>
+                            <td>Nominal total</td>
+                            <td>Jml angsuran</td>
+                            <td>Nominal angsuran</td>
+                            <td>Tgl jth tempo</td>
+                            <td>Jns pembayaran</td>
+                            <td>Siswa</td>
+                        </tr>
+                    </thead>
+                    <tbody class="keuangan_siswa_ids_tbody">
+                        <tr t-foreach="doc.keuangan_siswa_ids" t-as="line">
+                            <td><span t-field="line.name" /></td>
+                            <td><span t-field="line.nominal_total" /></td>
+                            <td><span t-field="line.jml_angsuran" /></td>
+                            <td><span t-field="line.nominal_angsuran" /></td>
+                            <td><span t-field="line.tgl_jth_tempo" /></td>
+                            <td><span t-field="line.jns_pembayaran_id" /></td>
+                            <td><span t-field="line.siswa_id" /></td>
+                        </tr> <!-- foreach-->
+                    </tbody>
+                </table>
+                <div class="oe_structure"/>
+            </t>
+        </template>
+
+        <!-- main template -->
+        <template id="cdn_pesantren.cdn_siswa_report">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-set="lang" t-value="doc.create_uid.lang"/>
+                    <t t-call="cdn_pesantren.cdn_siswa_report_document" />
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>

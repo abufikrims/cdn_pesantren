@@ -1,0 +1,615 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- tree view -->
+        <record id="view_cdn_siswa_tree" model="ir.ui.view">
+            <field name="name">cdn_siswa_tree</field>
+            <field name="model">cdn.siswa</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <tree string="Siswa">
+                    <field name="name" />
+                    <field name="no_daftar" />
+                    <field name="tgl_daftar" />
+                    <field name="program_daftar" />
+                    <field name="nama_panggilan" />
+                    <!-- <field name="jns_kel" />
+                    <field name="tmp_lahir" />
+                    <field name="tgl_lahir" />
+                    <field name="nik" />
+                    <field name="status_dlm_kel" />
+                    <field name="cita_cita" />
+                    <field name="hobi" />
+                    <field name="bhs_sehari" />
+                    <field name="gol_darah" />
+                    <field name="tinggi_badan" />
+                    <field name="berat_badan" />
+                    <field name="agama_siswa" />
+                    <field name="alamat_siswa" />
+                    <field name="rt_rw" /> -->
+                    <field name="kota_asal" />
+                    <field name="no_telp_rumah" />
+                    <field name="email_siswa" />
+                    <!-- <field name="kodepos" />
+                    <field name="tinggal_bersama" />
+                    <field name="sakit_tbc_pernah" />
+                    <field name="sakit_tbc_ket" />
+                    <field name="sakit_asma_pernah" />
+                    <field name="sakit_asma_ket" />
+                    <field name="sakit_hepatitisb_pernah" />
+                    <field name="sakit_hepatitisb_ket" />
+                    <field name="sakit_cacar_pernah" />
+                    <field name="sakit_cacar_ket" />
+                    <field name="sakit_lain_pernah" />
+                    <field name="sakit_lain_ket" /> -->
+                    <field name="sekolah_asal" />
+                    <!-- <field name="nisn" />
+                    <field name="alamat_sekolah_asal" />
+                    <field name="kepsek_sekolah_asal" />
+                    <field name="telp_sekolah_asal" />
+                    <field name="status_sekolah_asal" />
+                    <field name="prestasi_di_sekolah" />
+                    <field name="raport_4sd_1" />
+                    <field name="raport_4sd_2" />
+                    <field name="raport_5sd_1" />
+                    <field name="raport_5sd_2" />
+                    <field name="raport_6sd_1" />
+                    <field name="baca_quran" /> -->
+                    <field name="ayah_nama" />
+                    <!-- <field name="ayah_tmp_lahir" />
+                    <field name="ayah_tgl_lahir" />
+                    <field name="ayah_warganegara" />
+                    <field name="ayah_telp" />
+                    <field name="ayah_email" />
+                    <field name="ayah_alamat_kantor" />
+                    <field name="ayah_penghasilan" />
+                    <field name="ayah_pendidikan" /> -->
+                    <field name="ibu_nama" />
+                    <!-- <field name="ibu_tmp_lahir" />
+                    <field name="ibu_tgl_lahir" />
+                    <field name="ibu_warganegara" />
+                    <field name="ibu_telp" />
+                    <field name="ibu_email" />
+                    <field name="ibu_pekerjaan" />
+                    <field name="ibu_alamat_kantor" />
+                    <field name="ibu_penghasilan" />
+                    <field name="ibu_pendidikan" />
+                    <field name="wali_nama" />
+                    <field name="wali_tmp_lahir" />
+                    <field name="wali_tgl_lahir" />
+                    <field name="wali_warganegara" />
+                    <field name="wali_telp" />
+                    <field name="wali_email" />
+                    <field name="wali_pekerjaan" />
+                    <field name="wali_alamat_kantor" />
+                    <field name="wali_penghasilan" />
+                    <field name="wali_pendidikan" />
+                    <field name="institusi_tahfidz" />
+                    <field name="hafalan_sejak_kelas" />
+                    <field name="motivasi_menghafal" />
+                    <field name="pilihan_tahfidz" />
+                    <field name="foto" />
+                    <field name="propinsi_id" />
+                    <field name="ayah_pekerjaan_id" /> -->
+                    <field name="kelas_paralel_id" />
+                </tree>
+            </field>
+        </record>
+        <!-- form view -->
+        <record id="view_cdn_siswa_form" model="ir.ui.view">
+            <field name="name">cdn_siswa_form</field>
+            <field name="model">cdn.siswa</field>
+            <field name="type">form</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <form string="Siswa">
+                    <header>
+                        <!--button string="Confirm" type="object" name="action_confirm" states="draft" /-->
+                        <!--button string="Mark as Done" type="object" name="action_done" states="confirmed" /-->
+                        <!--button string="Reset to Draft" type="object" name="action_draft" states="confirmed,done" /-->
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                             <button type="object" name="open_kesehatan" string="Kesehatan" class="oe_stat_button" icon="fa-heartbeat">
+                                <!-- <field name="detail_count" widget="statinfo" string="Detail(s)"/> -->
+                                <!-- <field name="detail_ids" invisible="1"/> -->
+                            </button>
+                            <button type="object" name="open_pelanggaran" string="Pelanggaran" class="oe_stat_button" icon="fa-gavel">
+                                <!-- <field name="detail_count" widget="statinfo" string="Detail(s)"/> -->
+                                <!-- <field name="detail_ids" invisible="1"/> -->
+                            </button>
+                            <button type="object" name="open_keuangan" string="Keuangan" class="oe_stat_button" icon="fa-money">
+                                <!-- <field name="detail_count" widget="statinfo" string="Detail(s)"/> -->
+                                <!-- <field name="detail_ids" invisible="1"/> -->
+                            </button>
+                            <button type="object" name="open_perijinan" class="oe_stat_button" icon="fa-pencil-square-o">
+                                <field name="perijinan_count" widget="statinfo" string="Perijinan"/>
+                                <!-- <field name="detail_ids" invisible="1"/> -->
+                            </button>
+                        </div> 
+                            <field name="image" widget="image" class="oe_left oe_avatar"/>
+                        <!-- <field name="image" widget="image" class="oe_avatar" options='{"preview_image": "image_medium", "size": [90, 90]}'/> -->
+                        <div class="oe_title">
+                            <!-- <label for="name" class="oe_edit_only" string="Nama Siswa"/> -->
+                            <h1><field name="name"/></h1>
+                        </div>
+                        
+                            
+                        <group col="4" colspan="4" name="personal_detail">
+                            <field name="no_daftar" />
+                            <field name="tgl_daftar" />
+                            <field name="program_daftar" />
+                            <field name="nama_panggilan" />
+                            <field name="jns_kel" />
+                            <field name="tmp_lahir" />
+                            <field name="tgl_lahir" />
+                            <field name="nik" />
+                            <field name="status_dlm_kel" />
+                            <field name="cita_cita" />
+                            <field name="hobi" />
+                            <field name="bhs_sehari" />
+                            <field name="gol_darah" />
+                            <field name="tinggi_badan" placeholder="tinggi badan (cm)"/>
+                            <field name="berat_badan" placeholder="berat badan (KG)"/>
+                            <field name="agama_siswa" />
+                            <field name="propinsi_id" />
+
+                            <field name="kelas_paralel_id" />
+                            <field name="berkas_ids" widget="many2many_tags"/>
+                        </group>
+                        <separator string="Data Untuk Kelas Tahfidz - (Diisi jika mendaftar di kelas Tahfidz)" />
+                        <group>
+                            <field name="institusi_tahfidz" />
+                            <field name="hafalan_sejak_kelas" />
+                            <field name="motivasi_menghafal" />
+                            <field name="pilihan_tahfidz" />
+                            <!-- <field name="foto" /> -->
+                        </group>                                
+
+                        <notebook colspan="4">                                
+                            <page name="identitas_siswa" string="Domisili Siswa">
+                                <group string="Domisili Siswa" name="address">
+                                    <field name="alamat_siswa" />
+                                    <field name="rt_rw" />
+                                    <field name="kota_asal" />
+                                    <field name="no_telp_rumah" />
+                                    <field name="email_siswa" />
+                                    <field name="kodepos" />
+                                    <field name="tinggal_bersama" />
+                                </group>
+                            </page>
+                            <page string="Identitas Sekolah" name="educational">
+                                <separator string="Keterangan Pendidikan Sebelumnya" />
+                                <group col="4" colspan="4" name="educational_detail">
+                                    <field name="sekolah_asal" />
+                                    <field name="nisn" />
+                                    <field name="alamat_sekolah_asal" />
+                                    <field name="kepsek_sekolah_asal" />
+                                    <field name="telp_sekolah_asal" />
+                                    <field name="status_sekolah_asal" />
+                                    <field name="prestasi_di_sekolah" />
+                                </group>
+                                <separator string="Nilai Rata-Rata Raport Kelas" />
+                                <group>
+                                    <field name="raport_4sd_1" />
+                                    <field name="raport_4sd_2" />
+                                    <field name="raport_5sd_1" />
+                                    <field name="raport_5sd_2" />
+                                    <field name="raport_6sd_1" />
+                                    <field name="baca_quran" />
+                                </group>
+                            </page>
+                            <page string="Riwayat Kesehatan" name="health">
+                                <separator string="Penyakit yang pernah diderita" />  
+                                <group col="4" colspan="4">
+                                    <label for="sakit_tbc_pernah" string="Kapan Sakit TBC"/>
+                                    <div name="div_tbc">
+                                        <field name="sakit_tbc_pernah" />
+                                        <field name="sakit_tbc_ket" placeholder="Kapan sakit TBC" />                                        
+                                    </div>
+                                    <label for="sakit_asma_pernah" string="Pernah Sakit ASMA"/>
+                                    <div name="div_asma">
+                                        <field name="sakit_asma_pernah" />
+                                        <field name="sakit_asma_ket" placeholder="Kapan sakit Asma" />
+                                    </div>
+                                    <label for="sakit_hepatitisb_pernah" string="Pernah Sakit Hepatitis"/>
+                                    <div name="div_hepatitis">
+                                        <field name="sakit_hepatitisb_pernah" />
+                                        <field name="sakit_hepatitisb_ket" placeholder="Kapan sakit Hepatitis" />
+                                    </div>
+                                    <label for="sakit_cacar_pernah" string="Pernah Sakit Cacar"/>
+                                    <div name="div_cacar">
+                                        <field name="sakit_cacar_pernah" />
+                                        <field name="sakit_cacar_ket" placeholder="Kapan sakit Cacar" />
+                                    </div>
+                                    <label for="sakit_lain_pernah" string="Pernah Sakit Lain"/>
+                                    <div>
+                                        <field name="sakit_lain_pernah" />
+                                        <field name="sakit_lain_ket" placeholder="Kapan sakit lainnya" />
+                                    </div>                                   
+                                </group>
+                            </page>
+                            <page string="Identitas Ortu" name="ortu_siswa">
+                                <separator string="Identitas Ayah" colspan="4"/>
+                                <group col="4" colspan="4" name="ayah">
+                                    <field name="ayah_nama" />
+                                    <field name="ayah_tmp_lahir" />
+                                    <field name="ayah_tgl_lahir" />
+                                    <field name="ayah_warganegara" />
+                                    <field name="ayah_telp" />
+                                    <field name="ayah_email" />
+                                    <field name="ayah_pekerjaan_id" />
+                                    <field name="ayah_alamat_kantor" />
+                                    <field name="ayah_penghasilan" />
+                                    <field name="ayah_pendidikan" />
+                                </group>
+                                <separator string="Identitas Ibu" colspan="4"/>
+                                <group col="4" colspan="4" name="ibu">
+                                    <field name="ibu_nama" />
+                                    <field name="ibu_tmp_lahir" />
+                                    <field name="ibu_tgl_lahir" />
+                                    <field name="ibu_warganegara" />
+                                    <field name="ibu_telp" />
+                                    <field name="ibu_email" />
+                                    <field name="ibu_pekerjaan_id" />
+                                    <field name="ibu_alamat_kantor" />
+                                    <field name="ibu_penghasilan" />
+                                    <field name="ibu_pendidikan" />
+                                </group>
+                                <separator string="Identitas Wali" colspan="4"/>
+                                <group col="4" colspan="4">
+                                    <field name="wali_nama" />
+                                    <field name="wali_tmp_lahir" />
+                                    <field name="wali_tgl_lahir" />
+                                    <field name="wali_warganegara" />
+                                    <field name="wali_telp" />
+                                    <field name="wali_email" />
+                                    <field name="wali_pekerjaan_id" />
+                                    <field name="wali_alamat_kantor" />
+                                    <field name="wali_penghasilan" />
+                                    <field name="wali_pendidikan" />
+                                </group>
+                            </page>
+                            
+                            <page string="Data Keuangan Siswa">
+                                <field name="keuangan_siswa_ids"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!-- search -->
+        <record id="view_cdn_siswa_search" model="ir.ui.view">
+            <field name="name">cdn_siswa</field>
+            <field name="model">cdn.siswa</field>
+            <field name="arch" type="xml">
+                <search string="Siswa">
+
+                    <filter string="Name" name="filter_by_name" domain="[('name','=','')]" />
+                    <filter string="No daftar" name="filter_by_no_daftar" domain="[('no_daftar','=','')]" />
+                    <filter string="Tgl daftar" name="filter_by_tgl_daftar" domain="[('tgl_daftar','=','')]" />
+                    <filter string="Program daftar" name="filter_by_program_daftar" domain="[('program_daftar','=','')]" />
+                    <filter string="Nama panggilan" name="filter_by_nama_panggilan" domain="[('nama_panggilan','=','')]" />
+                    <filter string="Jns kel" name="filter_by_jns_kel" domain="[('jns_kel','=','')]" />
+                    <filter string="Tmp lahir" name="filter_by_tmp_lahir" domain="[('tmp_lahir','=','')]" />
+                    <filter string="Tgl lahir" name="filter_by_tgl_lahir" domain="[('tgl_lahir','=','')]" />
+                    <filter string="Nik" name="filter_by_nik" domain="[('nik','=','')]" />
+                    <filter string="Status dlm kel" name="filter_by_status_dlm_kel" domain="[('status_dlm_kel','=','')]" />
+                    <filter string="Cita cita" name="filter_by_cita_cita" domain="[('cita_cita','=','')]" />
+                    <filter string="Hobi" name="filter_by_hobi" domain="[('hobi','=','')]" />
+                    <filter string="Bhs sehari" name="filter_by_bhs_sehari" domain="[('bhs_sehari','=','')]" />
+                    <filter string="Gol darah" name="filter_by_gol_darah" domain="[('gol_darah','=','')]" />
+                    <filter string="Tinggi badan" name="filter_by_tinggi_badan" domain="[('tinggi_badan','=','')]" />
+                    <filter string="Berat badan" name="filter_by_berat_badan" domain="[('berat_badan','=','')]" />
+                    <filter string="Agama siswa" name="filter_by_agama_siswa" domain="[('agama_siswa','=','')]" />
+                    <filter string="Alamat siswa" name="filter_by_alamat_siswa" domain="[('alamat_siswa','=','')]" />
+                    <filter string="Rt rw" name="filter_by_rt_rw" domain="[('rt_rw','=','')]" />
+                    <filter string="Kota asal" name="filter_by_kota_asal" domain="[('kota_asal','=','')]" />
+                    <filter string="No telp rumah" name="filter_by_no_telp_rumah" domain="[('no_telp_rumah','=','')]" />
+                    <filter string="Email siswa" name="filter_by_email_siswa" domain="[('email_siswa','=','')]" />
+                    <filter string="Kodepos" name="filter_by_kodepos" domain="[('kodepos','=','')]" />
+                    <filter string="Tinggal bersama" name="filter_by_tinggal_bersama" domain="[('tinggal_bersama','=','')]" />
+                    <filter string="Sakit tbc pernah" name="filter_by_sakit_tbc_pernah" domain="[('sakit_tbc_pernah','=','')]" />
+                    <filter string="Sakit tbc ket" name="filter_by_sakit_tbc_ket" domain="[('sakit_tbc_ket','=','')]" />
+                    <filter string="Sakit asma pernah" name="filter_by_sakit_asma_pernah" domain="[('sakit_asma_pernah','=','')]" />
+                    <filter string="Sakit asma ket" name="filter_by_sakit_asma_ket" domain="[('sakit_asma_ket','=','')]" />
+                    <filter string="Sakit hepatitisb pernah" name="filter_by_sakit_hepatitisb_pernah" domain="[('sakit_hepatitisb_pernah','=','')]" />
+                    <filter string="Sakit hepatitisb ket" name="filter_by_sakit_hepatitisb_ket" domain="[('sakit_hepatitisb_ket','=','')]" />
+                    <filter string="Sakit cacar pernah" name="filter_by_sakit_cacar_pernah" domain="[('sakit_cacar_pernah','=','')]" />
+                    <filter string="Sakit cacar ket" name="filter_by_sakit_cacar_ket" domain="[('sakit_cacar_ket','=','')]" />
+                    <filter string="Sakit lain pernah" name="filter_by_sakit_lain_pernah" domain="[('sakit_lain_pernah','=','')]" />
+                    <filter string="Sakit lain ket" name="filter_by_sakit_lain_ket" domain="[('sakit_lain_ket','=','')]" />
+                    <filter string="Sekolah asal" name="filter_by_sekolah_asal" domain="[('sekolah_asal','=','')]" />
+                    <filter string="Nisn" name="filter_by_nisn" domain="[('nisn','=','')]" />
+                    <filter string="Alamat sekolah asal" name="filter_by_alamat_sekolah_asal" domain="[('alamat_sekolah_asal','=','')]" />
+                    <filter string="Kepsek sekolah asal" name="filter_by_kepsek_sekolah_asal" domain="[('kepsek_sekolah_asal','=','')]" />
+                    <filter string="Telp sekolah asal" name="filter_by_telp_sekolah_asal" domain="[('telp_sekolah_asal','=','')]" />
+                    <filter string="Status sekolah asal" name="filter_by_status_sekolah_asal" domain="[('status_sekolah_asal','=','')]" />
+                    <filter string="Prestasi di sekolah" name="filter_by_prestasi_di_sekolah" domain="[('prestasi_di_sekolah','=','')]" />
+                    <filter string="Raport 4sd 1" name="filter_by_raport_4sd_1" domain="[('raport_4sd_1','=','')]" />
+                    <filter string="Raport 4sd 2" name="filter_by_raport_4sd_2" domain="[('raport_4sd_2','=','')]" />
+                    <filter string="Raport 5sd 1" name="filter_by_raport_5sd_1" domain="[('raport_5sd_1','=','')]" />
+                    <filter string="Raport 5sd 2" name="filter_by_raport_5sd_2" domain="[('raport_5sd_2','=','')]" />
+                    <filter string="Raport 6sd 1" name="filter_by_raport_6sd_1" domain="[('raport_6sd_1','=','')]" />
+                    <filter string="Baca quran" name="filter_by_baca_quran" domain="[('baca_quran','=','')]" />
+                    <filter string="Ayah nama" name="filter_by_ayah_nama" domain="[('ayah_nama','=','')]" />
+                    <filter string="Ayah tmp lahir" name="filter_by_ayah_tmp_lahir" domain="[('ayah_tmp_lahir','=','')]" />
+                    <filter string="Ayah tgl lahir" name="filter_by_ayah_tgl_lahir" domain="[('ayah_tgl_lahir','=','')]" />
+                    <filter string="Ayah warganegara" name="filter_by_ayah_warganegara" domain="[('ayah_warganegara','=','')]" />
+                    <filter string="Ayah telp" name="filter_by_ayah_telp" domain="[('ayah_telp','=','')]" />
+                    <filter string="Ayah email" name="filter_by_ayah_email" domain="[('ayah_email','=','')]" />
+                    <filter string="Ayah alamat kantor" name="filter_by_ayah_alamat_kantor" domain="[('ayah_alamat_kantor','=','')]" />
+                    <filter string="Ayah penghasilan" name="filter_by_ayah_penghasilan" domain="[('ayah_penghasilan','=','')]" />
+                    <filter string="Ayah pendidikan" name="filter_by_ayah_pendidikan" domain="[('ayah_pendidikan','=','')]" />
+                    <filter string="Ibu nama" name="filter_by_ibu_nama" domain="[('ibu_nama','=','')]" />
+                    <filter string="Ibu tmp lahir" name="filter_by_ibu_tmp_lahir" domain="[('ibu_tmp_lahir','=','')]" />
+                    <filter string="Ibu tgl lahir" name="filter_by_ibu_tgl_lahir" domain="[('ibu_tgl_lahir','=','')]" />
+                    <filter string="Ibu warganegara" name="filter_by_ibu_warganegara" domain="[('ibu_warganegara','=','')]" />
+                    <filter string="Ibu telp" name="filter_by_ibu_telp" domain="[('ibu_telp','=','')]" />
+                    <filter string="Ibu email" name="filter_by_ibu_email" domain="[('ibu_email','=','')]" />
+                    <!-- <filter string="Ibu pekerjaan" name="filter_by_ibu_pekerjaan_id" domain="[('ibu_pekerjaan_id','=','')]" /> -->
+                    <filter string="Ibu alamat kantor" name="filter_by_ibu_alamat_kantor" domain="[('ibu_alamat_kantor','=','')]" />
+                    <filter string="Ibu penghasilan" name="filter_by_ibu_penghasilan" domain="[('ibu_penghasilan','=','')]" />
+                    <filter string="Ibu pendidikan" name="filter_by_ibu_pendidikan" domain="[('ibu_pendidikan','=','')]" />
+                    <filter string="Wali nama" name="filter_by_wali_nama" domain="[('wali_nama','=','')]" />
+                    <filter string="Wali tmp lahir" name="filter_by_wali_tmp_lahir" domain="[('wali_tmp_lahir','=','')]" />
+                    <filter string="Wali tgl lahir" name="filter_by_wali_tgl_lahir" domain="[('wali_tgl_lahir','=','')]" />
+                    <filter string="Wali warganegara" name="filter_by_wali_warganegara" domain="[('wali_warganegara','=','')]" />
+                    <filter string="Wali telp" name="filter_by_wali_telp" domain="[('wali_telp','=','')]" />
+                    <filter string="Wali email" name="filter_by_wali_email" domain="[('wali_email','=','')]" />
+                    <!-- <filter string="Wali pekerjaan" name="filter_by_wali_pekerjaan" domain="[('wali_pekerjaan','=','')]" /> -->
+                    <filter string="Wali alamat kantor" name="filter_by_wali_alamat_kantor" domain="[('wali_alamat_kantor','=','')]" />
+                    <filter string="Wali penghasilan" name="filter_by_wali_penghasilan" domain="[('wali_penghasilan','=','')]" />
+                    <filter string="Wali pendidikan" name="filter_by_wali_pendidikan" domain="[('wali_pendidikan','=','')]" />
+                    <filter string="Institusi tahfidz" name="filter_by_institusi_tahfidz" domain="[('institusi_tahfidz','=','')]" />
+                    <filter string="Hafalan sejak kelas" name="filter_by_hafalan_sejak_kelas" domain="[('hafalan_sejak_kelas','=','')]" />
+                    <filter string="Motivasi menghafal" name="filter_by_motivasi_menghafal" domain="[('motivasi_menghafal','=','')]" />
+                    <filter string="Pilihan tahfidz" name="filter_by_pilihan_tahfidz" domain="[('pilihan_tahfidz','=','')]" />
+                    <!-- <filter string="Foto" name="filter_by_foto" domain="[('foto','=','')]" /> -->
+                    <field name="name" select="True"/>
+                    <field name="no_daftar" select="True"/>
+                    <field name="tgl_daftar" select="True"/>
+                    <field name="program_daftar" select="True"/>
+                    <field name="nama_panggilan" select="True"/>
+                    <field name="jns_kel" select="True"/>
+                    <field name="tmp_lahir" select="True"/>
+                    <field name="tgl_lahir" select="True"/>
+                    <field name="nik" select="True"/>
+                    <field name="status_dlm_kel" select="True"/>
+                    <field name="cita_cita" select="True"/>
+                    <field name="hobi" select="True"/>
+                    <field name="bhs_sehari" select="True"/>
+                    <field name="gol_darah" select="True"/>
+                    <field name="tinggi_badan" select="True"/>
+                    <field name="berat_badan" select="True"/>
+                    <field name="agama_siswa" select="True"/>
+                    <field name="alamat_siswa" select="True"/>
+                    <field name="rt_rw" select="True"/>
+                    <field name="kota_asal" select="True"/>
+                    <field name="no_telp_rumah" select="True"/>
+                    <field name="email_siswa" select="True"/>
+                    <field name="kodepos" select="True"/>
+                    <field name="tinggal_bersama" select="True"/>
+                    <field name="sakit_tbc_pernah" select="True"/>
+                    <field name="sakit_tbc_ket" select="True"/>
+                    <field name="sakit_asma_pernah" select="True"/>
+                    <field name="sakit_asma_ket" select="True"/>
+                    <field name="sakit_hepatitisb_pernah" select="True"/>
+                    <field name="sakit_hepatitisb_ket" select="True"/>
+                    <field name="sakit_cacar_pernah" select="True"/>
+                    <field name="sakit_cacar_ket" select="True"/>
+                    <field name="sakit_lain_pernah" select="True"/>
+                    <field name="sakit_lain_ket" select="True"/>
+                    <field name="sekolah_asal" select="True"/>
+                    <field name="nisn" select="True"/>
+                    <field name="alamat_sekolah_asal" select="True"/>
+                    <field name="kepsek_sekolah_asal" select="True"/>
+                    <field name="telp_sekolah_asal" select="True"/>
+                    <field name="status_sekolah_asal" select="True"/>
+                    <field name="prestasi_di_sekolah" select="True"/>
+                    <field name="raport_4sd_1" select="True"/>
+                    <field name="raport_4sd_2" select="True"/>
+                    <field name="raport_5sd_1" select="True"/>
+                    <field name="raport_5sd_2" select="True"/>
+                    <field name="raport_6sd_1" select="True"/>
+                    <field name="baca_quran" select="True"/>
+                    <field name="ayah_nama" select="True"/>
+                    <field name="ayah_tmp_lahir" select="True"/>
+                    <field name="ayah_tgl_lahir" select="True"/>
+                    <field name="ayah_warganegara" select="True"/>
+                    <field name="ayah_telp" select="True"/>
+                    <field name="ayah_email" select="True"/>
+                    <field name="ayah_alamat_kantor" select="True"/>
+                    <field name="ayah_penghasilan" select="True"/>
+                    <field name="ayah_pendidikan" select="True"/>
+                    <field name="ibu_nama" select="True"/>
+                    <field name="ibu_tmp_lahir" select="True"/>
+                    <field name="ibu_tgl_lahir" select="True"/>
+                    <field name="ibu_warganegara" select="True"/>
+                    <field name="ibu_telp" select="True"/>
+                    <field name="ibu_email" select="True"/>
+                    <field name="ibu_pekerjaan_id" select="True"/>
+                    <field name="ibu_alamat_kantor" select="True"/>
+                    <field name="ibu_penghasilan" select="True"/>
+                    <field name="ibu_pendidikan" select="True"/>
+                    <field name="wali_nama" select="True"/>
+                    <field name="wali_tmp_lahir" select="True"/>
+                    <field name="wali_tgl_lahir" select="True"/>
+                    <field name="wali_warganegara" select="True"/>
+                    <field name="wali_telp" select="True"/>
+                    <field name="wali_email" select="True"/>
+                    <field name="wali_pekerjaan_id" select="True"/>
+                    <field name="wali_alamat_kantor" select="True"/>
+                    <field name="wali_penghasilan" select="True"/>
+                    <field name="wali_pendidikan" select="True"/>
+                    <field name="institusi_tahfidz" select="True"/>
+                    <field name="hafalan_sejak_kelas" select="True"/>
+                    <field name="motivasi_menghafal" select="True"/>
+                    <field name="pilihan_tahfidz" select="True"/>
+                    <!-- <field name="foto" select="True"/> -->
+                    <field name="propinsi_id" select="True"/>
+                    <field name="ayah_pekerjaan_id" select="True"/>
+                    <field name="kelas_paralel_id" select="True"/>
+                    <group string="Group By..">
+                        <filter string="Propinsi" domain="[]" name="group_by_propinsi_id" context="{'group_by':'propinsi_id'}"/>
+                        <filter string="Ayah pekerjaan" domain="[]" name="group_by_ayah_pekerjaan_id" context="{'group_by':'ayah_pekerjaan_id'}"/>
+                        <filter string="Kelas paralel" domain="[]" name="group_by_kelas_paralel_id" context="{'group_by':'kelas_paralel_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        <!-- kanban , to show image, please add image_small in the model -->
+        <record id="view_cdn_siswa_kanban" model="ir.ui.view" >
+            <field name="name">cdn_siswa</field>
+            <field name="model">cdn.siswa</field>
+            <field name="arch" type="xml">
+                <kanban version="7.0">
+                    <field name="id" />
+                    <field name="name" />
+                    <field name="no_daftar" />
+                    <field name="tgl_daftar" />
+                    <field name="program_daftar" />
+                    <field name="nama_panggilan" />
+                    <field name="jns_kel" />
+                    <field name="tmp_lahir" />
+                    <field name="tgl_lahir" />
+                    <field name="nik" />
+                    <field name="status_dlm_kel" />
+                    <field name="cita_cita" />
+                    <field name="hobi" />
+                    <field name="bhs_sehari" />
+                    <field name="gol_darah" />
+                    <field name="tinggi_badan" />
+                    <field name="berat_badan" />
+                    <field name="agama_siswa" />
+                    <field name="alamat_siswa" />
+                    <field name="rt_rw" />
+                    <field name="kota_asal" />
+                    <field name="no_telp_rumah" />
+                    <field name="email_siswa" />
+                    <field name="kodepos" />
+                    <field name="tinggal_bersama" />
+                    <field name="sakit_tbc_pernah" />
+                    <field name="sakit_tbc_ket" />
+                    <field name="sakit_asma_pernah" />
+                    <field name="sakit_asma_ket" />
+                    <field name="sakit_hepatitisb_pernah" />
+                    <field name="sakit_hepatitisb_ket" />
+                    <field name="sakit_cacar_pernah" />
+                    <field name="sakit_cacar_ket" />
+                    <field name="sakit_lain_pernah" />
+                    <field name="sakit_lain_ket" />
+                    <field name="sekolah_asal" />
+                    <field name="nisn" />
+                    <field name="alamat_sekolah_asal" />
+                    <field name="kepsek_sekolah_asal" />
+                    <field name="telp_sekolah_asal" />
+                    <field name="status_sekolah_asal" />
+                    <field name="prestasi_di_sekolah" />
+                    <field name="raport_4sd_1" />
+                    <field name="raport_4sd_2" />
+                    <field name="raport_5sd_1" />
+                    <field name="raport_5sd_2" />
+                    <field name="raport_6sd_1" />
+                    <field name="baca_quran" />
+                    <field name="ayah_nama" />
+                    <field name="ayah_tmp_lahir" />
+                    <field name="ayah_tgl_lahir" />
+                    <field name="ayah_warganegara" />
+                    <field name="ayah_telp" />
+                    <field name="ayah_email" />
+                    <field name="ayah_alamat_kantor" />
+                    <field name="ayah_penghasilan" />
+                    <field name="ayah_pendidikan" />
+                    <field name="ibu_nama" />
+                    <field name="ibu_tmp_lahir" />
+                    <field name="ibu_tgl_lahir" />
+                    <field name="ibu_warganegara" />
+                    <field name="ibu_telp" />
+                    <field name="ibu_email" />
+                    <!-- <field name="ibu_pekerjaan" /> -->
+                    <field name="ibu_alamat_kantor" />
+                    <field name="ibu_penghasilan" />
+                    <field name="ibu_pendidikan" />
+                    <field name="wali_nama" />
+                    <field name="wali_tmp_lahir" />
+                    <field name="wali_tgl_lahir" />
+                    <field name="wali_warganegara" />
+                    <field name="wali_telp" />
+                    <field name="wali_email" />
+                    <!-- <field name="wali_pekerjaan" /> -->
+                    <field name="wali_alamat_kantor" />
+                    <field name="wali_penghasilan" />
+                    <field name="wali_pendidikan" />
+                    <field name="institusi_tahfidz" />
+                    <field name="hafalan_sejak_kelas" />
+                    <field name="motivasi_menghafal" />
+                    <field name="pilihan_tahfidz" />
+                    <!-- <field name="foto" /> -->
+                    <field name="propinsi_id" />
+                    <field name="ayah_pekerjaan_id" />
+                    <field name="kelas_paralel_id" />
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click o_kanban_record_has_image_fill">
+                                <div class="oe_kanban_details">
+                                    <h4>
+                                        <a type="open"><field name="name"/></a>
+                                    </h4>
+                                    <ul>
+                                        <li>
+                                           No Induk: <field name="name"></field> 
+                                        </li>
+                                        <li>
+                                            Asal Sekolah: <field name="sekolah_asal"></field>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+        <!-- calendar if a date field exists -->
+        <record id="view_cdn_siswa_cal" model="ir.ui.view">
+            <field name="name">cdn_siswa_cal</field>
+            <field name="model">cdn.siswa</field>
+            <field name="arch" type="xml">
+                <calendar string="Siswa" date_start="wali_tgl_lahir">
+                    <field name="name" />
+                </calendar>
+            </field>
+        </record>
+        <!-- graph -->
+        <record id="view_cdn_siswa_graph" model="ir.ui.view">
+            <field name="name">cdn_siswa</field>
+            <field name="model">cdn.siswa</field>
+            <field name="arch" type="xml">
+                <graph string="Siswa" type="bar">
+                    <field name="propinsi_id"/>
+                </graph>
+            </field>
+        </record>
+        <!-- action window -->
+        <record id="action_cdn_siswa" model="ir.actions.act_window">
+            <field name="name">Siswa</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">cdn.siswa</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,tree,form,calendar,graph</field>
+            <field name="context">{"search_default_fieldname":1}</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                Click to add a new Siswa
+                </p><p>
+                Click the Create button to add a new Siswa
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="menu_cdn_siswa" name="Siswa" parent="cdn_pesantren_sub_menu" action="action_cdn_siswa" sequence="20"/>
+    </data>
+</odoo>

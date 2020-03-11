@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- report qweb view -->
+        <report id="report_cdn_kelas_paralel_menu" string="Cdn - Kelas paralel"
+         model="cdn.kelas_paralel" report_type="qweb-pdf" 
+         file="cdn.kelas_paralel"  name="cdn_pesantren.cdn_kelas_paralel_report" />
+
+        <!-- document template -->
+        <template id="cdn_pesantren.cdn_kelas_paralel_report_document" >
+            <t t-call="web.external_layout">
+                <t t-set="doc" t-value="doc.with_context({'lang': lang})"/>
+                <div class="page">
+                    <h2>
+                        Kelas paralel: <span t-field="doc.name"/>
+                    </h2>
+                    <div class="row mt32 mb32">
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Deskripsi</strong>
+                            <p class="m-0" t-field="doc.deskripsi" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Kelas</strong>
+                            <p class="m-0" t-field="doc.kelas_id"/>
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Ustadz</strong>
+                            <p class="m-0" t-field="doc.ustadz_id"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="oe_structure"/>
+                <h2>Siswas</h2>
+                <table class="table table-sm o_main_table" name="siswa_ids_table">
+                    <thead>
+                        <tr>
+                            <td>Name</td>
+                            <td>No daftar</td>
+                            <td>Tgl daftar</td>
+                            <td>Program daftar</td>
+                            <td>Nama panggilan</td>
+                            <td>Jns kel</td>
+                            <td>Tmp lahir</td>
+                            <td>Tgl lahir</td>
+                            <td>Nik</td>
+                            <td>Status dlm kel</td>
+                            <td>Cita cita</td>
+                            <td>Hobi</td>
+                            <td>Bhs sehari</td>
+                            <td>Gol darah</td>
+                            <td>Tinggi badan</td>
+                            <td>Berat badan</td>
+                            <td>Agama siswa</td>
+                            <td>Alamat siswa</td>
+                            <td>Rt rw</td>
+                            <td>Kota asal</td>
+                            <td>No telp rumah</td>
+                            <td>Email siswa</td>
+                            <td>Kodepos</td>
+                            <td>Tinggal bersama</td>
+                            <td>Sakit tbc pernah</td>
+                            <td>Sakit tbc ket</td>
+                            <td>Sakit asma pernah</td>
+                            <td>Sakit asma ket</td>
+                            <td>Sakit hepatitisb pernah</td>
+                            <td>Sakit hepatitisb ket</td>
+                            <td>Sakit cacar pernah</td>
+                            <td>Sakit cacar ket</td>
+                            <td>Sakit lain pernah</td>
+                            <td>Sakit lain ket</td>
+                            <td>Sekolah asal</td>
+                            <td>Nisn</td>
+                            <td>Alamat sekolah asal</td>
+                            <td>Kepsek sekolah asal</td>
+                            <td>Telp sekolah asal</td>
+                            <td>Status sekolah asal</td>
+                            <td>Prestasi di sekolah</td>
+                            <td>Raport 4sd 1</td>
+                            <td>Raport 4sd 2</td>
+                            <td>Raport 5sd 1</td>
+                            <td>Raport 5sd 2</td>
+                            <td>Raport 6sd 1</td>
+                            <td>Baca quran</td>
+                            <td>Ayah nama</td>
+                            <td>Ayah tmp lahir</td>
+                            <td>Ayah tgl lahir</td>
+                            <td>Ayah warganegara</td>
+                            <td>Ayah telp</td>
+                            <td>Ayah email</td>
+                            <td>Ayah alamat kantor</td>
+                            <td>Ayah penghasilan</td>
+                            <td>Ayah pendidikan</td>
+                            <td>Ibu nama</td>
+                            <td>Ibu tmp lahir</td>
+                            <td>Ibu tgl lahir</td>
+                            <td>Ibu warganegara</td>
+                            <td>Ibu telp</td>
+                            <td>Ibu email</td>
+                            <td>Ibu pekerjaan</td>
+                            <td>Ibu alamat kantor</td>
+                            <td>Ibu penghasilan</td>
+                            <td>Ibu pendidikan</td>
+                            <td>Wali nama</td>
+                            <td>Wali tmp lahir</td>
+                            <td>Wali tgl lahir</td>
+                            <td>Wali warganegara</td>
+                            <td>Wali telp</td>
+                            <td>Wali email</td>
+                            <td>Wali pekerjaan</td>
+                            <td>Wali alamat kantor</td>
+                            <td>Wali penghasilan</td>
+                            <td>Wali pendidikan</td>
+                            <td>Institusi tahfidz</td>
+                            <td>Hafalan sejak kelas</td>
+                            <td>Motivasi menghafal</td>
+                            <td>Pilihan tahfidz</td>
+                            <td>Foto</td>
+                            <td>Propinsi</td>
+                            <td>Ayah pekerjaan</td>
+                            <td>Kelas paralel</td>
+                            <td>Berkass</td>
+                        </tr>
+                    </thead>
+                    <tbody class="siswa_ids_tbody">
+                        <tr t-foreach="doc.siswa_ids" t-as="line">
+                            <td><span t-field="line.name" /></td>
+                            <td><span t-field="line.no_daftar" /></td>
+                            <td><span t-field="line.tgl_daftar" /></td>
+                            <td><span t-field="line.program_daftar" /></td>
+                            <td><span t-field="line.nama_panggilan" /></td>
+                            <td><span t-field="line.jns_kel" /></td>
+                            <td><span t-field="line.tmp_lahir" /></td>
+                            <td><span t-field="line.tgl_lahir" /></td>
+                            <td><span t-field="line.nik" /></td>
+                            <td><span t-field="line.status_dlm_kel" /></td>
+                            <td><span t-field="line.cita_cita" /></td>
+                            <td><span t-field="line.hobi" /></td>
+                            <td><span t-field="line.bhs_sehari" /></td>
+                            <td><span t-field="line.gol_darah" /></td>
+                            <td><span t-field="line.tinggi_badan" /></td>
+                            <td><span t-field="line.berat_badan" /></td>
+                            <td><span t-field="line.agama_siswa" /></td>
+                            <td><span t-field="line.alamat_siswa" /></td>
+                            <td><span t-field="line.rt_rw" /></td>
+                            <td><span t-field="line.kota_asal" /></td>
+                            <td><span t-field="line.no_telp_rumah" /></td>
+                            <td><span t-field="line.email_siswa" /></td>
+                            <td><span t-field="line.kodepos" /></td>
+                            <td><span t-field="line.tinggal_bersama" /></td>
+                            <td><span t-field="line.sakit_tbc_pernah" /></td>
+                            <td><span t-field="line.sakit_tbc_ket" /></td>
+                            <td><span t-field="line.sakit_asma_pernah" /></td>
+                            <td><span t-field="line.sakit_asma_ket" /></td>
+                            <td><span t-field="line.sakit_hepatitisb_pernah" /></td>
+                            <td><span t-field="line.sakit_hepatitisb_ket" /></td>
+                            <td><span t-field="line.sakit_cacar_pernah" /></td>
+                            <td><span t-field="line.sakit_cacar_ket" /></td>
+                            <td><span t-field="line.sakit_lain_pernah" /></td>
+                            <td><span t-field="line.sakit_lain_ket" /></td>
+                            <td><span t-field="line.sekolah_asal" /></td>
+                            <td><span t-field="line.nisn" /></td>
+                            <td><span t-field="line.alamat_sekolah_asal" /></td>
+                            <td><span t-field="line.kepsek_sekolah_asal" /></td>
+                            <td><span t-field="line.telp_sekolah_asal" /></td>
+                            <td><span t-field="line.status_sekolah_asal" /></td>
+                            <td><span t-field="line.prestasi_di_sekolah" /></td>
+                            <td><span t-field="line.raport_4sd_1" /></td>
+                            <td><span t-field="line.raport_4sd_2" /></td>
+                            <td><span t-field="line.raport_5sd_1" /></td>
+                            <td><span t-field="line.raport_5sd_2" /></td>
+                            <td><span t-field="line.raport_6sd_1" /></td>
+                            <td><span t-field="line.baca_quran" /></td>
+                            <td><span t-field="line.ayah_nama" /></td>
+                            <td><span t-field="line.ayah_tmp_lahir" /></td>
+                            <td><span t-field="line.ayah_tgl_lahir" /></td>
+                            <td><span t-field="line.ayah_warganegara" /></td>
+                            <td><span t-field="line.ayah_telp" /></td>
+                            <td><span t-field="line.ayah_email" /></td>
+                            <td><span t-field="line.ayah_alamat_kantor" /></td>
+                            <td><span t-field="line.ayah_penghasilan" /></td>
+                            <td><span t-field="line.ayah_pendidikan" /></td>
+                            <td><span t-field="line.ibu_nama" /></td>
+                            <td><span t-field="line.ibu_tmp_lahir" /></td>
+                            <td><span t-field="line.ibu_tgl_lahir" /></td>
+                            <td><span t-field="line.ibu_warganegara" /></td>
+                            <td><span t-field="line.ibu_telp" /></td>
+                            <td><span t-field="line.ibu_email" /></td>
+                            <td><span t-field="line.ibu_pekerjaan" /></td>
+                            <td><span t-field="line.ibu_alamat_kantor" /></td>
+                            <td><span t-field="line.ibu_penghasilan" /></td>
+                            <td><span t-field="line.ibu_pendidikan" /></td>
+                            <td><span t-field="line.wali_nama" /></td>
+                            <td><span t-field="line.wali_tmp_lahir" /></td>
+                            <td><span t-field="line.wali_tgl_lahir" /></td>
+                            <td><span t-field="line.wali_warganegara" /></td>
+                            <td><span t-field="line.wali_telp" /></td>
+                            <td><span t-field="line.wali_email" /></td>
+                            <td><span t-field="line.wali_pekerjaan" /></td>
+                            <td><span t-field="line.wali_alamat_kantor" /></td>
+                            <td><span t-field="line.wali_penghasilan" /></td>
+                            <td><span t-field="line.wali_pendidikan" /></td>
+                            <td><span t-field="line.institusi_tahfidz" /></td>
+                            <td><span t-field="line.hafalan_sejak_kelas" /></td>
+                            <td><span t-field="line.motivasi_menghafal" /></td>
+                            <td><span t-field="line.pilihan_tahfidz" /></td>
+                            <td><span t-field="line.foto" /></td>
+                            <td><span t-field="line.propinsi_id" /></td>
+                            <td><span t-field="line.ayah_pekerjaan_id" /></td>
+                            <td><span t-field="line.kelas_paralel_id" /></td>
+                            <td><span t-field="line.berkas_ids" /></td>
+                        </tr> <!-- foreach-->
+                    </tbody>
+                </table>
+                <div class="oe_structure"/>
+            </t>
+        </template>
+
+        <!-- main template -->
+        <template id="cdn_pesantren.cdn_kelas_paralel_report">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-set="lang" t-value="doc.create_uid.lang"/>
+                    <t t-call="cdn_pesantren.cdn_kelas_paralel_report_document" />
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>

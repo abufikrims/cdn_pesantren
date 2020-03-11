@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- tree view -->
+        <record id="view_cdn_pelanggaran_tree" model="ir.ui.view">
+            <field name="name">cdn_pelanggaran_tree</field>
+            <field name="model">cdn.pelanggaran</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <tree string="Pelanggaran">
+                    <field name="name" />
+                    <field name="tgl_pelanggaran" />
+                    <field name="diperiksa_oleh" />
+                    <field name="poin" />
+                    <field name="deskripsi" />
+                    <field name="tindakan_id" />
+                    <field name="siswa_id" />
+                </tree>
+            </field>
+        </record>
+        <!-- form view -->
+        <record id="view_cdn_pelanggaran_form" model="ir.ui.view">
+            <field name="name">cdn_pelanggaran_form</field>
+            <field name="model">cdn.pelanggaran</field>
+            <field name="type">form</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <form string="Pelanggaran">
+                    <header>
+                        <!--button string="Confirm" type="object" name="action_confirm" states="draft" /-->
+                        <!--button string="Mark as Done" type="object" name="action_done" states="confirmed" /-->
+                        <!--button string="Reset to Draft" type="object" name="action_draft" states="confirmed,done" /-->
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <!--button type="object" name="action_view_detail" class="oe_stat_button" icon="fa-pencil-square-o"-->
+                                <!--field name="detail_count" widget="statinfo" string="Detail(s)"/-->
+                                <!--field name="detail_ids" invisible="1"/-->
+                            <!--/button-->
+                        </div>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only" string="Pelanggaran Name"/>
+                            <h1><field name="name"/></h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="tgl_pelanggaran" />
+                                <field name="diperiksa_oleh" />
+                                <field name="poin" />
+                                <field name="deskripsi" />
+                            </group>
+                            <group>
+                                <field name="tindakan_id" />
+                                <field name="siswa_id" />
+                            </group>
+                        </group>
+                        <notebook>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!-- search -->
+        <record id="view_cdn_pelanggaran_search" model="ir.ui.view">
+            <field name="name">cdn_pelanggaran</field>
+            <field name="model">cdn.pelanggaran</field>
+            <field name="arch" type="xml">
+                <search string="Pelanggaran">
+
+                    <filter string="Name" name="filter_by_name" domain="[('name','=','')]" />
+                    <filter string="Tgl pelanggaran" name="filter_by_tgl_pelanggaran" domain="[('tgl_pelanggaran','=','')]" />
+                    <filter string="Diperiksa oleh" name="filter_by_diperiksa_oleh" domain="[('diperiksa_oleh','=','')]" />
+                    <filter string="Poin" name="filter_by_poin" domain="[('poin','=','')]" />
+                    <filter string="Deskripsi" name="filter_by_deskripsi" domain="[('deskripsi','=','')]" />
+                    <field name="name" select="True"/>
+                    <field name="tgl_pelanggaran" select="True"/>
+                    <field name="diperiksa_oleh" select="True"/>
+                    <field name="poin" select="True"/>
+                    <field name="deskripsi" select="True"/>
+                    <field name="tindakan_id" select="True"/>
+                    <field name="siswa_id" select="True"/>
+                    <group string="Group By..">
+                        <filter string="Tindakan" domain="[]" name="group_by_tindakan_id" context="{'group_by':'tindakan_id'}"/>
+                        <filter string="Siswa" domain="[]" name="group_by_siswa_id" context="{'group_by':'siswa_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        <!-- kanban , to show image, please add image_small in the model -->
+        <record id="view_cdn_pelanggaran_kanban" model="ir.ui.view" >
+            <field name="name">cdn_pelanggaran</field>
+            <field name="model">cdn.pelanggaran</field>
+            <field name="arch" type="xml">
+                <kanban version="7.0">
+                    <field name="id" />
+                    <field name="name" />
+                    <field name="tgl_pelanggaran" />
+                    <field name="diperiksa_oleh" />
+                    <field name="poin" />
+                    <field name="deskripsi" />
+                    <field name="tindakan_id" />
+                    <field name="siswa_id" />
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click o_kanban_record_has_image_fill">
+                                <div class="oe_kanban_details">
+                                    <h4>
+                                        <a type="open"><field name="name"/></a>
+                                    </h4>
+                                    <ul>
+                                        <li>
+                                            Field1: <field name="name"></field>
+                                        </li>
+                                        <li>
+                                            Field2: <field name="name"></field>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+        <!-- calendar if a date field exists -->
+        <record id="view_cdn_pelanggaran_cal" model="ir.ui.view">
+            <field name="name">cdn_pelanggaran_cal</field>
+            <field name="model">cdn.pelanggaran</field>
+            <field name="arch" type="xml">
+                <calendar string="Pelanggaran" date_start="tgl_pelanggaran">
+                    <field name="name" />
+                </calendar>
+            </field>
+        </record>
+        <!-- graph -->
+        <record id="view_cdn_pelanggaran_graph" model="ir.ui.view">
+            <field name="name">cdn_pelanggaran</field>
+            <field name="model">cdn.pelanggaran</field>
+            <field name="arch" type="xml">
+                <graph string="Pelanggaran" type="bar">
+                    <field name="tindakan_id"/>
+                </graph>
+            </field>
+        </record>
+        <!-- action window -->
+        <record id="action_cdn_pelanggaran" model="ir.actions.act_window">
+            <field name="name">Pelanggaran</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">cdn.pelanggaran</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,tree,form,calendar,graph</field>
+            <field name="context">{"search_default_fieldname":1}</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                Click to add a new Pelanggaran
+                </p><p>
+                Click the Create button to add a new Pelanggaran
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="menu_cdn_pelanggaran" name="Pelanggaran" parent="cdn_pesantren_sub_menu" action="action_cdn_pelanggaran" sequence="20"/>
+    </data>
+</odoo>

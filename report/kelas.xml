@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- report qweb view -->
+        <report id="report_cdn_kelas_menu" string="Cdn - Kelas"
+         model="cdn.kelas" report_type="qweb-pdf" 
+         file="cdn.kelas"  name="cdn_pesantren.cdn_kelas_report" />
+
+        <!-- document template -->
+        <template id="cdn_pesantren.cdn_kelas_report_document" >
+            <t t-call="web.external_layout">
+                <t t-set="doc" t-value="doc.with_context({'lang': lang})"/>
+                <div class="page">
+                    <h2>
+                        Kelas: <span t-field="doc.name"/>
+                    </h2>
+                    <div class="row mt32 mb32">
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Deskripsi</strong>
+                            <p class="m-0" t-field="doc.deskripsi" />
+                        </div>
+                    </div>
+                </div>
+                <div class="oe_structure"/>
+                <h2>Kelas paralels</h2>
+                <table class="table table-sm o_main_table" name="kelas_paralel_ids_table">
+                    <thead>
+                        <tr>
+                            <td>Name</td>
+                            <td>Deskripsi</td>
+                            <td>Kelas</td>
+                            <td>Ustadz</td>
+                        </tr>
+                    </thead>
+                    <tbody class="kelas_paralel_ids_tbody">
+                        <tr t-foreach="doc.kelas_paralel_ids" t-as="line">
+                            <td><span t-field="line.name" /></td>
+                            <td><span t-field="line.deskripsi" /></td>
+                            <td><span t-field="line.kelas_id" /></td>
+                            <td><span t-field="line.ustadz_id" /></td>
+                        </tr> <!-- foreach-->
+                    </tbody>
+                </table>
+                <div class="oe_structure"/>
+            </t>
+        </template>
+
+        <!-- main template -->
+        <template id="cdn_pesantren.cdn_kelas_report">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-set="lang" t-value="doc.create_uid.lang"/>
+                    <t t-call="cdn_pesantren.cdn_kelas_report_document" />
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>

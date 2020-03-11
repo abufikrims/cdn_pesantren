@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- report qweb view -->
+        <report id="report_cdn_uang_saku_siswa_menu" string="Cdn - Uang saku siswa"
+         model="cdn.uang_saku_siswa" report_type="qweb-pdf" 
+         file="cdn.uang_saku_siswa"  name="cdn_pesantren.cdn_uang_saku_siswa_report" />
+
+        <!-- document template -->
+        <template id="cdn_pesantren.cdn_uang_saku_siswa_report_document" >
+            <t t-call="web.external_layout">
+                <t t-set="doc" t-value="doc.with_context({'lang': lang})"/>
+                <div class="page">
+                    <h2>
+                        Uang saku siswa: <span t-field="doc.name"/>
+                    </h2>
+                    <div class="row mt32 mb32">
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Tgl transaksi</strong>
+                            <p class="m-0" t-field="doc.tgl_transaksi" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Jns transaksi</strong>
+                            <p class="m-0" t-field="doc.jns_transaksi" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Nominal transaksi</strong>
+                            <p class="m-0" t-field="doc.nominal_transaksi" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>State</strong>
+                            <p class="m-0" t-field="doc.state" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Tgl verifikasi</strong>
+                            <p class="m-0" t-field="doc.tgl_verifikasi" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Transaksi via</strong>
+                            <p class="m-0" t-field="doc.transaksi_via" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Siswa</strong>
+                            <p class="m-0" t-field="doc.siswa_id"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="oe_structure"/>
+            </t>
+        </template>
+
+        <!-- main template -->
+        <template id="cdn_pesantren.cdn_uang_saku_siswa_report">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-set="lang" t-value="doc.create_uid.lang"/>
+                    <t t-call="cdn_pesantren.cdn_uang_saku_siswa_report_document" />
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>

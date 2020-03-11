@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- tree view -->
+        <record id="view_cdn_jns_pembayaran_tree" model="ir.ui.view">
+            <field name="name">cdn_jns_pembayaran_tree</field>
+            <field name="model">cdn.jns_pembayaran</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <tree string="Jns pembayaran">
+                    <field name="name" />
+                    <field name="deskripsi" />
+                    <field name="nominal" />
+                    <field name="is_angsuran" />
+                    <field name="jml_angsuran" />
+                    <field name="nominal_angsuran" />
+                    <field name="tgl_bayar_bulanan" />
+                    <field name="tgl_jth_tempo" />
+                </tree>
+            </field>
+        </record>
+        <!-- form view -->
+        <record id="view_cdn_jns_pembayaran_form" model="ir.ui.view">
+            <field name="name">cdn_jns_pembayaran_form</field>
+            <field name="model">cdn.jns_pembayaran</field>
+            <field name="type">form</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <form string="Jns pembayaran">
+                    <header>
+                        <!--button string="Confirm" type="object" name="action_confirm" states="draft" /-->
+                        <!--button string="Mark as Done" type="object" name="action_done" states="confirmed" /-->
+                        <!--button string="Reset to Draft" type="object" name="action_draft" states="confirmed,done" /-->
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <!--button type="object" name="action_view_detail" class="oe_stat_button" icon="fa-pencil-square-o"-->
+                                <!--field name="detail_count" widget="statinfo" string="Detail(s)"/-->
+                                <!--field name="detail_ids" invisible="1"/-->
+                            <!--/button-->
+                        </div>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only" string="Jns pembayaran Name"/>
+                            <h1><field name="name"/></h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="deskripsi" />
+                                <field name="nominal" />
+                                <field name="is_angsuran" />
+                                <field name="jml_angsuran" />
+                                <field name="nominal_angsuran" />
+                                <field name="tgl_bayar_bulanan" />
+                                <field name="tgl_jth_tempo" />
+                            </group>
+                            <group>
+                            </group>
+                        </group>
+                        <notebook>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!-- search -->
+        <record id="view_cdn_jns_pembayaran_search" model="ir.ui.view">
+            <field name="name">cdn_jns_pembayaran</field>
+            <field name="model">cdn.jns_pembayaran</field>
+            <field name="arch" type="xml">
+                <search string="Jns pembayaran">
+
+                    <filter string="Name" name="filter_by_name" domain="[('name','=','')]" />
+                    <filter string="Deskripsi" name="filter_by_deskripsi" domain="[('deskripsi','=','')]" />
+                    <filter string="Nominal" name="filter_by_nominal" domain="[('nominal','=','')]" />
+                    <filter string="Is angsuran" name="filter_by_is_angsuran" domain="[('is_angsuran','=','')]" />
+                    <filter string="Jml angsuran" name="filter_by_jml_angsuran" domain="[('jml_angsuran','=','')]" />
+                    <filter string="Nominal angsuran" name="filter_by_nominal_angsuran" domain="[('nominal_angsuran','=','')]" />
+                    <filter string="Tgl bayar bulanan" name="filter_by_tgl_bayar_bulanan" domain="[('tgl_bayar_bulanan','=','')]" />
+                    <filter string="Tgl jth tempo" name="filter_by_tgl_jth_tempo" domain="[('tgl_jth_tempo','=','')]" />
+                    <field name="name" select="True"/>
+                    <field name="deskripsi" select="True"/>
+                    <field name="nominal" select="True"/>
+                    <field name="is_angsuran" select="True"/>
+                    <field name="jml_angsuran" select="True"/>
+                    <field name="nominal_angsuran" select="True"/>
+                    <field name="tgl_bayar_bulanan" select="True"/>
+                    <field name="tgl_jth_tempo" select="True"/>
+                    <group string="Group By..">
+                    </group>
+                </search>
+            </field>
+        </record>
+        <!-- kanban , to show image, please add image_small in the model -->
+        <record id="view_cdn_jns_pembayaran_kanban" model="ir.ui.view" >
+            <field name="name">cdn_jns_pembayaran</field>
+            <field name="model">cdn.jns_pembayaran</field>
+            <field name="arch" type="xml">
+                <kanban version="7.0">
+                    <field name="id" />
+                    <field name="name" />
+                    <field name="deskripsi" />
+                    <field name="nominal" />
+                    <field name="is_angsuran" />
+                    <field name="jml_angsuran" />
+                    <field name="nominal_angsuran" />
+                    <field name="tgl_bayar_bulanan" />
+                    <field name="tgl_jth_tempo" />
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click o_kanban_record_has_image_fill">
+                                <div class="oe_kanban_details">
+                                    <h4>
+                                        <a type="open"><field name="name"/></a>
+                                    </h4>
+                                    <ul>
+                                        <li>
+                                            Field1: <field name="name"></field>
+                                        </li>
+                                        <li>
+                                            Field2: <field name="name"></field>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+        <!-- calendar if a date field exists -->
+        <record id="view_cdn_jns_pembayaran_cal" model="ir.ui.view">
+            <field name="name">cdn_jns_pembayaran_cal</field>
+            <field name="model">cdn.jns_pembayaran</field>
+            <field name="arch" type="xml">
+                <calendar string="Jns pembayaran" date_start="tgl_jth_tempo">
+                    <field name="name" />
+                </calendar>
+            </field>
+        </record>
+        <!-- graph -->
+        <record id="view_cdn_jns_pembayaran_graph" model="ir.ui.view">
+            <field name="name">cdn_jns_pembayaran</field>
+            <field name="model">cdn.jns_pembayaran</field>
+            <field name="arch" type="xml">
+                <graph string="Jns pembayaran" type="bar">
+                </graph>
+            </field>
+        </record>
+        <!-- action window -->
+        <record id="action_cdn_jns_pembayaran" model="ir.actions.act_window">
+            <field name="name">Jns pembayaran</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">cdn.jns_pembayaran</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,tree,form,calendar</field>
+            <field name="context">{"search_default_fieldname":1}</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                Click to add a new Jns pembayaran
+                </p><p>
+                Click the Create button to add a new Jns pembayaran
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="menu_cdn_jns_pembayaran" name="Jns pembayaran" parent="cdn_pesantren_sub_menu" action="action_cdn_jns_pembayaran" sequence="20"/>
+    </data>
+</odoo>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- report qweb view -->
+        <report id="report_cdn_tahfidz_siswa_menu" string="Cdn - Tahfidz siswa"
+         model="cdn.tahfidz_siswa" report_type="qweb-pdf" 
+         file="cdn.tahfidz_siswa"  name="cdn_pesantren.cdn_tahfidz_siswa_report" />
+
+        <!-- document template -->
+        <template id="cdn_pesantren.cdn_tahfidz_siswa_report_document" >
+            <t t-call="web.external_layout">
+                <t t-set="doc" t-value="doc.with_context({'lang': lang})"/>
+                <div class="page">
+                    <h2>
+                        Tahfidz siswa: <span t-field="doc.name"/>
+                    </h2>
+                    <div class="row mt32 mb32">
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Tgl tahfidz</strong>
+                            <p class="m-0" t-field="doc.tgl_tahfidz" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Tambah halaman</strong>
+                            <p class="m-0" t-field="doc.tambah_halaman" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Murojaah halaman</strong>
+                            <p class="m-0" t-field="doc.murojaah_halaman" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Deskripsi</strong>
+                            <p class="m-0" t-field="doc.deskripsi" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Status hafalan</strong>
+                            <p class="m-0" t-field="doc.status_hafalan_id"/>
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Siswa</strong>
+                            <p class="m-0" t-field="doc.siswa_id"/>
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Ustadz</strong>
+                            <p class="m-0" t-field="doc.ustadz_id"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="oe_structure"/>
+            </t>
+        </template>
+
+        <!-- main template -->
+        <template id="cdn_pesantren.cdn_tahfidz_siswa_report">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-set="lang" t-value="doc.create_uid.lang"/>
+                    <t t-call="cdn_pesantren.cdn_tahfidz_siswa_report_document" />
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>

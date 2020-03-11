@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- tree view -->
+        <record id="view_cdn_kesehatan_tree" model="ir.ui.view">
+            <field name="name">cdn_kesehatan_tree</field>
+            <field name="model">cdn.kesehatan</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <tree string="Kesehatan">
+                    <field name="name" />
+                    <field name="tgl_periksa" />
+                    <field name="keluhan" />
+                    <field name="obat" />
+                    <field name="diperiksa_oleh" />
+                    <field name="kondisi" />
+                    <field name="tgl_selesai" />
+                    <field name="catatan" />
+                    <field name="siswa_id" />
+                </tree>
+            </field>
+        </record>
+        <!-- form view -->
+        <record id="view_cdn_kesehatan_form" model="ir.ui.view">
+            <field name="name">cdn_kesehatan_form</field>
+            <field name="model">cdn.kesehatan</field>
+            <field name="type">form</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <form string="Kesehatan">
+                    <header>
+                        <!--button string="Confirm" type="object" name="action_confirm" states="draft" /-->
+                        <!--button string="Mark as Done" type="object" name="action_done" states="confirmed" /-->
+                        <!--button string="Reset to Draft" type="object" name="action_draft" states="confirmed,done" /-->
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <!--button type="object" name="action_view_detail" class="oe_stat_button" icon="fa-pencil-square-o"-->
+                                <!--field name="detail_count" widget="statinfo" string="Detail(s)"/-->
+                                <!--field name="detail_ids" invisible="1"/-->
+                            <!--/button-->
+                        </div>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only" string="Kesehatan Name"/>
+                            <h1><field name="name"/></h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="tgl_periksa" />
+                                <field name="keluhan" />
+                                <field name="obat" />
+                                <field name="diperiksa_oleh" />
+                                <field name="kondisi" />
+                                <field name="tgl_selesai" />
+                                <field name="catatan" />
+                            </group>
+                            <group>
+                                <field name="siswa_id" />
+                            </group>
+                        </group>
+                        <notebook>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!-- search -->
+        <record id="view_cdn_kesehatan_search" model="ir.ui.view">
+            <field name="name">cdn_kesehatan</field>
+            <field name="model">cdn.kesehatan</field>
+            <field name="arch" type="xml">
+                <search string="Kesehatan">
+
+                    <filter string="Name" name="filter_by_name" domain="[('name','=','')]" />
+                    <filter string="Tgl periksa" name="filter_by_tgl_periksa" domain="[('tgl_periksa','=','')]" />
+                    <filter string="Keluhan" name="filter_by_keluhan" domain="[('keluhan','=','')]" />
+                    <filter string="Obat" name="filter_by_obat" domain="[('obat','=','')]" />
+                    <filter string="Diperiksa oleh" name="filter_by_diperiksa_oleh" domain="[('diperiksa_oleh','=','')]" />
+                    <filter string="Kondisi" name="filter_by_kondisi" domain="[('kondisi','=','')]" />
+                    <filter string="Tgl selesai" name="filter_by_tgl_selesai" domain="[('tgl_selesai','=','')]" />
+                    <filter string="Catatan" name="filter_by_catatan" domain="[('catatan','=','')]" />
+                    <field name="name" select="True"/>
+                    <field name="tgl_periksa" select="True"/>
+                    <field name="keluhan" select="True"/>
+                    <field name="obat" select="True"/>
+                    <field name="diperiksa_oleh" select="True"/>
+                    <field name="kondisi" select="True"/>
+                    <field name="tgl_selesai" select="True"/>
+                    <field name="catatan" select="True"/>
+                    <field name="siswa_id" select="True"/>
+                    <group string="Group By..">
+                        <filter string="Siswa" domain="[]" name="group_by_siswa_id" context="{'group_by':'siswa_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        <!-- kanban , to show image, please add image_small in the model -->
+        <record id="view_cdn_kesehatan_kanban" model="ir.ui.view" >
+            <field name="name">cdn_kesehatan</field>
+            <field name="model">cdn.kesehatan</field>
+            <field name="arch" type="xml">
+                <kanban version="7.0">
+                    <field name="id" />
+                    <field name="name" />
+                    <field name="tgl_periksa" />
+                    <field name="keluhan" />
+                    <field name="obat" />
+                    <field name="diperiksa_oleh" />
+                    <field name="kondisi" />
+                    <field name="tgl_selesai" />
+                    <field name="catatan" />
+                    <field name="siswa_id" />
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click o_kanban_record_has_image_fill">
+                                <div class="oe_kanban_details">
+                                    <h4>
+                                        <a type="open"><field name="name"/></a>
+                                    </h4>
+                                    <ul>
+                                        <li>
+                                            Field1: <field name="name"></field>
+                                        </li>
+                                        <li>
+                                            Field2: <field name="name"></field>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+        <!-- calendar if a date field exists -->
+        <record id="view_cdn_kesehatan_cal" model="ir.ui.view">
+            <field name="name">cdn_kesehatan_cal</field>
+            <field name="model">cdn.kesehatan</field>
+            <field name="arch" type="xml">
+                <calendar string="Kesehatan" date_start="tgl_selesai">
+                    <field name="name" />
+                </calendar>
+            </field>
+        </record>
+        <!-- graph -->
+        <record id="view_cdn_kesehatan_graph" model="ir.ui.view">
+            <field name="name">cdn_kesehatan</field>
+            <field name="model">cdn.kesehatan</field>
+            <field name="arch" type="xml">
+                <graph string="Kesehatan" type="bar">
+                    <field name="siswa_id"/>
+                </graph>
+            </field>
+        </record>
+        <!-- action window -->
+        <record id="action_cdn_kesehatan" model="ir.actions.act_window">
+            <field name="name">Kesehatan</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">cdn.kesehatan</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,tree,form,calendar,graph</field>
+            <field name="context">{"search_default_fieldname":1}</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                Click to add a new Kesehatan
+                </p><p>
+                Click the Create button to add a new Kesehatan
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="menu_cdn_kesehatan" name="Kesehatan" parent="cdn_pesantren_sub_menu" action="action_cdn_kesehatan" sequence="20"/>
+    </data>
+</odoo>
