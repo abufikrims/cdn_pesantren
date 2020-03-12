@@ -135,6 +135,6 @@
             </field>
         </record>
 
-        <menuitem id="menu_cdn_tindakan_hukuman" name="Tindakan hukuman" parent="cdn_pesantren_sub_menu" action="action_cdn_tindakan_hukuman" sequence="20"/>
+        <menuitem id="menu_cdn_tindakan_hukuman" name="Tindakan hukuman" parent="cdn_pesantren_sub_konfig" action="action_cdn_tindakan_hukuman" sequence="20"/>
     </data>
 </odoo>

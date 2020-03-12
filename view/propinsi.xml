@@ -125,6 +125,6 @@
             </field>
         </record>
 
-        <menuitem id="menu_cdn_propinsi" name="Propinsi" parent="cdn_pesantren_sub_menu" action="action_cdn_propinsi" sequence="20"/>
+        <menuitem id="menu_cdn_propinsi" name="Propinsi" parent="cdn_pesantren_sub_konfig" action="action_cdn_propinsi" sequence="20"/>
     </data>
 </odoo>

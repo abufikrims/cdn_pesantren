@@ -97,7 +97,7 @@
             </field>
         </record>
         <!-- kanban , to show image, please add image_small in the model -->
-        <record id="view_cdn_perijinan_kanban" model="ir.ui.view" >
+        <!-- <record id="view_cdn_perijinan_kanban" model="ir.ui.view" >
             <field name="name">cdn_perijinan</field>
             <field name="model">cdn.perijinan</field>
             <field name="arch" type="xml">
@@ -133,7 +133,7 @@
                     </templates>
                 </kanban>
             </field>
-        </record>
+        </record> -->
         <!-- calendar if a date field exists -->
         <record id="view_cdn_perijinan_cal" model="ir.ui.view">
             <field name="name">cdn_perijinan_cal</field>
@@ -160,7 +160,7 @@
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">cdn.perijinan</field>
             <field name="view_type">form</field>
-            <field name="view_mode">kanban,tree,form,calendar,graph</field>
+            <field name="view_mode">tree,form,calendar,graph</field>
             <field name="context">{"search_default_fieldname":1}</field>
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">
@@ -171,6 +171,6 @@
             </field>
         </record>
 
-        <menuitem id="menu_cdn_perijinan" name="Perijinan" parent="cdn_pesantren_sub_menu" action="action_cdn_perijinan" sequence="20"/>
+        <menuitem id="menu_cdn_perijinan" name="Perijinan" parent="cdn_pesantren_sub_aktivitas" action="action_cdn_perijinan" sequence="20"/>
     </data>
 </odoo>

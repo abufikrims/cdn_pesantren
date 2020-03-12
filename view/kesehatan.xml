@@ -11,13 +11,13 @@
                 <tree string="Kesehatan">
                     <field name="name" />
                     <field name="tgl_periksa" />
+                    <field name="siswa_id" />
                     <field name="keluhan" />
                     <field name="obat" />
                     <field name="diperiksa_oleh" />
-                    <field name="kondisi" />
+                    <field name="state" />
                     <field name="tgl_selesai" />
                     <field name="catatan" />
-                    <field name="siswa_id" />
                 </tree>
             </field>
         </record>
@@ -30,9 +30,11 @@
             <field name="arch" type="xml">
                 <form string="Kesehatan">
                     <header>
-                        <!--button string="Confirm" type="object" name="action_confirm" states="draft" /-->
+                        <!-- <button string="Confirm" type="object" name="action_confirm" states="Periksa" /> -->
                         <!--button string="Mark as Done" type="object" name="action_done" states="confirmed" /-->
                         <!--button string="Reset to Draft" type="object" name="action_draft" states="confirmed,done" /-->
+                        <button name="kesehatan_confirm" type="object" states="Periksa" string="Periksa" class="oe_highlight"/>
+                        <field name="state" widget="statusbar"/>
                     </header>
                     <sheet>
                         <div class="oe_button_box" name="button_box">
@@ -42,7 +44,7 @@
                             <!--/button-->
                         </div>
                         <div class="oe_title">
-                            <label for="name" class="oe_edit_only" string="Kesehatan Name"/>
+                            <label for="name" class="oe_edit_only" string="No Referensi (AUTO)"/>
                             <h1><field name="name"/></h1>
                         </div>
                         <group>
@@ -51,7 +53,7 @@
                                 <field name="keluhan" />
                                 <field name="obat" />
                                 <field name="diperiksa_oleh" />
-                                <field name="kondisi" />
+                                <!-- <field name="state" /> -->
                                 <field name="tgl_selesai" />
                                 <field name="catatan" />
                             </group>
@@ -77,7 +79,7 @@
                     <filter string="Keluhan" name="filter_by_keluhan" domain="[('keluhan','=','')]" />
                     <filter string="Obat" name="filter_by_obat" domain="[('obat','=','')]" />
                     <filter string="Diperiksa oleh" name="filter_by_diperiksa_oleh" domain="[('diperiksa_oleh','=','')]" />
-                    <filter string="Kondisi" name="filter_by_kondisi" domain="[('kondisi','=','')]" />
+                    <filter string="Kondisi" name="filter_by_kondisi" domain="[('state','=','')]" />
                     <filter string="Tgl selesai" name="filter_by_tgl_selesai" domain="[('tgl_selesai','=','')]" />
                     <filter string="Catatan" name="filter_by_catatan" domain="[('catatan','=','')]" />
                     <field name="name" select="True"/>
@@ -85,7 +87,7 @@
                     <field name="keluhan" select="True"/>
                     <field name="obat" select="True"/>
                     <field name="diperiksa_oleh" select="True"/>
-                    <field name="kondisi" select="True"/>
+                    <field name="state" select="True"/>
                     <field name="tgl_selesai" select="True"/>
                     <field name="catatan" select="True"/>
                     <field name="siswa_id" select="True"/>
@@ -96,6 +98,7 @@
             </field>
         </record>
         <!-- kanban , to show image, please add image_small in the model -->
+<!-- 
         <record id="view_cdn_kesehatan_kanban" model="ir.ui.view" >
             <field name="name">cdn_kesehatan</field>
             <field name="model">cdn.kesehatan</field>
@@ -132,7 +135,7 @@
                     </templates>
                 </kanban>
             </field>
-        </record>
+        </record> -->
         <!-- calendar if a date field exists -->
         <record id="view_cdn_kesehatan_cal" model="ir.ui.view">
             <field name="name">cdn_kesehatan_cal</field>
@@ -159,7 +162,7 @@
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">cdn.kesehatan</field>
             <field name="view_type">form</field>
-            <field name="view_mode">kanban,tree,form,calendar,graph</field>
+            <field name="view_mode">tree,form,calendar,graph</field>
             <field name="context">{"search_default_fieldname":1}</field>
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">
@@ -170,6 +173,15 @@
             </field>
         </record>
 
-        <menuitem id="menu_cdn_kesehatan" name="Kesehatan" parent="cdn_pesantren_sub_menu" action="action_cdn_kesehatan" sequence="20"/>
+        <!-- Sequence No Referensi Kesehatan -->
+        <record id="seq_kesehatan_new" model="ir.sequence">
+            <field name="name">No Referensi</field>
+            <field name="code">cdn.kesehatan</field>
+            <field name="prefix">KS%(y)s%(month)s</field>
+            <field name="padding">5</field>
+        </record>
+
+
+        <menuitem id="menu_cdn_kesehatan" name="Kondisi Kesehatan" parent="cdn_pesantren_sub_aktivitas" action="action_cdn_kesehatan" sequence="20"/>
     </data>
 </odoo>

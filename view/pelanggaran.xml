@@ -40,7 +40,7 @@
                             <!--/button-->
                         </div>
                         <div class="oe_title">
-                            <label for="name" class="oe_edit_only" string="Pelanggaran Name"/>
+                            <label for="name" class="oe_edit_only" string="No Referensi (Auto)"/>
                             <h1><field name="name"/></h1>
                         </div>
                         <group>
@@ -88,7 +88,7 @@
             </field>
         </record>
         <!-- kanban , to show image, please add image_small in the model -->
-        <record id="view_cdn_pelanggaran_kanban" model="ir.ui.view" >
+        <!-- <record id="view_cdn_pelanggaran_kanban" model="ir.ui.view" >
             <field name="name">cdn_pelanggaran</field>
             <field name="model">cdn.pelanggaran</field>
             <field name="arch" type="xml">
@@ -122,7 +122,7 @@
                     </templates>
                 </kanban>
             </field>
-        </record>
+        </record> -->
         <!-- calendar if a date field exists -->
         <record id="view_cdn_pelanggaran_cal" model="ir.ui.view">
             <field name="name">cdn_pelanggaran_cal</field>
@@ -149,7 +149,7 @@
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">cdn.pelanggaran</field>
             <field name="view_type">form</field>
-            <field name="view_mode">kanban,tree,form,calendar,graph</field>
+            <field name="view_mode">tree,form,calendar,graph</field>
             <field name="context">{"search_default_fieldname":1}</field>
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">
@@ -160,6 +160,13 @@
             </field>
         </record>
 
-        <menuitem id="menu_cdn_pelanggaran" name="Pelanggaran" parent="cdn_pesantren_sub_menu" action="action_cdn_pelanggaran" sequence="20"/>
+        <record id="seq_pelanggaran_new" model="ir.sequence">
+            <field name="name">No Referensi</field>
+            <field name="code">cdn.pelanggaran</field>
+            <field name="prefix">KP/%(y)s/%(month)s/</field>
+            <field name="padding">5</field>
+        </record>
+
+        <menuitem id="menu_cdn_pelanggaran" name="Pelanggaran" parent="cdn_pesantren_sub_aktivitas" action="action_cdn_pelanggaran" sequence="20"/>
     </data>
 </odoo>

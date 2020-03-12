@@ -8,6 +8,7 @@ class siswa(models.Model):
 
     _name = "cdn.siswa"
     name = fields.Char( required=True, string="Name",  help="")
+    no_induk_siswa = fields.Char( string="No Induk Siswa",  help="")
     no_daftar = fields.Char( string="Nomor Pendaftaran",  help="")
     tgl_daftar = fields.Date( string="Tanggal Pendaftaran",  help="")
     program_daftar = fields.Selection(selection=[('Reguler','Reguler 10-30 juz 6 th'),('Tahfidz','Tahfidz 30 Juz 3 thn')],  string="Program daftar",  help="")
@@ -115,4 +116,56 @@ class siswa(models.Model):
         count = self.env['cdn.perijinan'].search_count([('siswa_id','=', self.id)])
         self.perijinan_count = count
 
+    @api.multi
+    def open_kesehatan(self):
+        return {
+            'name': _('Kesehatan'),
+            'domain': [('siswa_id','=', self.id)],
+            'view_type': 'form',
+            'res_model': 'cdn.kesehatan',
+            'view_id': False,
+            'view_mode': 'tree,form',
+            'type': 'ir.actions.act_window'
+
+        }
+
+    def get_kesehatan_count(self):
+        count = self.env['cdn.kesehatan'].search_count([('siswa_id','=', self.id)])
+        self.kesehatan_count = count
+    
+    def open_pelanggaran(self):
+        return {
+            'name': _('Pelanggaran'),
+            'domain': [('siswa_id','=', self.id)],
+            'view_type': 'form',
+            'res_model': 'cdn.pelanggaran',
+            'view_id': False,
+            'view_mode': 'tree,form',
+            'type': 'ir.actions.act_window'
+
+        }
+
+    def get_pelanggaran_count(self):
+        count = self.env['cdn.pelanggaran'].search_count([('siswa_id','=', self.id)])
+        self.pelanggaran_count = count
+
+    def open_keuangan(self):
+        return  {
+            'name': _('Keuangan'),
+            'domain': [('siswa_id','=', self.id)],
+            'view_type': 'form',
+            'res_model': 'cdn.pembayaran_siswa',
+            'view_id': False,
+            'view_mode': 'tree,form',
+            'type': 'ir.actions.act_window'
+
+        }
+
+    def get_keuangan_count(self):
+        count = self.env['cdn.pembayaran_siswa'].search_count([('siswa_id','=', self.id)])
+        self.keuangan_count = count
+
     perijinan_count = fields.Integer(string='Perijinan', compute='get_perijinan_count')
+    kesehatan_count = fields.Integer(string='Kesehatan', compute='get_kesehatan_count')
+    pelanggaran_count = fields.Integer(string='Pelanggaran', compute='get_pelanggaran_count')
+    keuangan_count = fields.Integer(string='Keuangan', compute='get_keuangan_count')

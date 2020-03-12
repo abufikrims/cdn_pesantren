@@ -130,6 +130,6 @@
             </field>
         </record>
 
-        <menuitem id="menu_cdn_status_hafalan" name="Status hafalan" parent="cdn_pesantren_sub_menu" action="action_cdn_status_hafalan" sequence="20"/>
+        <menuitem id="menu_cdn_status_hafalan" name="Status hafalan" parent="cdn_pesantren_sub_konfig" action="action_cdn_status_hafalan" sequence="20"/>
     </data>
 </odoo>
