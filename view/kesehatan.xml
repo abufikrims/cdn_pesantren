@@ -50,16 +50,18 @@
                         <group>
                             <group>
                                 <field name="tgl_periksa" />
-                                <field name="keluhan" />
-                                <field name="obat" />
-                                <field name="diperiksa_oleh" />
+                                <field name="siswa_id" />
                                 <!-- <field name="state" /> -->
                                 <field name="tgl_selesai" />
-                                <field name="catatan" />
                             </group>
                             <group>
-                                <field name="siswa_id" />
+                                <field name="diperiksa_oleh" />
+                                <field name="keluhan" />
                             </group>
+                            <separator string="Obat / Tindakan" />
+                            <field name="obat" />
+                            <separator string="Catatan Medis" />
+                            <field name="catatan" />
                         </group>
                         <notebook>
                         </notebook>
