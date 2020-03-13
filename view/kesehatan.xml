@@ -34,7 +34,8 @@
                         <!--button string="Mark as Done" type="object" name="action_done" states="confirmed" /-->
                         <!--button string="Reset to Draft" type="object" name="action_draft" states="confirmed,done" /-->
                         <button name="kesehatan_confirm" type="object" states="Periksa" string="Periksa" class="oe_highlight"/>
-                        <field name="state" widget="statusbar"/>
+                        
+                        <field name="state" widget="statusbar" clickable="True" options="{'fold_field': 'fold'}"/>
                     </header>
                     <sheet>
                         <div class="oe_button_box" name="button_box">
@@ -76,14 +77,17 @@
             <field name="arch" type="xml">
                 <search string="Kesehatan">
 
-                    <filter string="Name" name="filter_by_name" domain="[('name','=','')]" />
+                    <!-- <filter string="Name" name="filter_by_name" domain="[('name','=','')]" />
                     <filter string="Tgl periksa" name="filter_by_tgl_periksa" domain="[('tgl_periksa','=','')]" />
                     <filter string="Keluhan" name="filter_by_keluhan" domain="[('keluhan','=','')]" />
                     <filter string="Obat" name="filter_by_obat" domain="[('obat','=','')]" />
-                    <filter string="Diperiksa oleh" name="filter_by_diperiksa_oleh" domain="[('diperiksa_oleh','=','')]" />
-                    <filter string="Kondisi" name="filter_by_kondisi" domain="[('state','=','')]" />
-                    <filter string="Tgl selesai" name="filter_by_tgl_selesai" domain="[('tgl_selesai','=','')]" />
-                    <filter string="Catatan" name="filter_by_catatan" domain="[('catatan','=','')]" />
+                    <filter string="Diperiksa oleh" name="filter_by_diperiksa_oleh" domain="[('diperiksa_oleh','=','')]" /> -->
+                    <filter string="Pasien Baru" name="filter_by_kondisi" domain="[('state','=','Periksa')]" />
+                    <filter string="Pasien dalam Pengobatan" name="filter_by_kondisi" domain="[('state','=','Pengobatan')]" />
+                    <filter string="Pasien dirawat" name="filter_by_kondisi" domain="[('state','=','Rawat')]" />
+                    <filter string="Pasien Sembuh" name="filter_by_kondisi" domain="[('state','=','Sembuh')]" />
+                    <!-- <filter string="Tgl selesai" name="filter_by_tgl_selesai" domain="[('tgl_selesai','=','')]" />
+                    <filter string="Catatan" name="filter_by_catatan" domain="[('catatan','=','')]" /> -->
                     <field name="name" select="True"/>
                     <field name="tgl_periksa" select="True"/>
                     <field name="keluhan" select="True"/>

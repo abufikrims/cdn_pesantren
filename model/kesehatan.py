@@ -27,3 +27,7 @@ class kesehatan(models.Model):
     @api.multi
     def kesehatan_confirm(self):
         return self.write({'state': 'Periksa'})
+
+    @api.multi
+    def kesehatan_pengobatan(self):
+        return self.write({'state':'Pengobatan'})
