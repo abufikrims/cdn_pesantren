@@ -125,6 +125,6 @@
             </field>
         </record>
 
-        <menuitem id="menu_cdn_jns_prestasi" name="Jns prestasi" parent="cdn_pesantren_sub_menu" action="action_cdn_jns_prestasi" sequence="20"/>
+        <menuitem id="menu_cdn_jns_prestasi" name="Jenis Prestasi" parent="cdn_pesantren_konfig_detail1" action="action_cdn_jns_prestasi" sequence="20"/>
     </data>
 </odoo>

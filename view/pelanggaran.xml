@@ -167,6 +167,6 @@
             <field name="padding">5</field>
         </record>
 
-        <menuitem id="menu_cdn_pelanggaran" name="Pelanggaran" parent="cdn_pesantren_sub_aktivitas" action="action_cdn_pelanggaran" sequence="20"/>
+        <menuitem id="menu_cdn_pelanggaran" name="Pelanggaran" parent="cdn_pesantren_aktivitas_detail1" action="action_cdn_pelanggaran" sequence="20"/>
     </data>
 </odoo>

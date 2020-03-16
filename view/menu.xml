@@ -4,6 +4,12 @@
 		<menuitem id="cdn_pesantren_sub_santri" name="Santri" sequence="30" parent="cdn_pesantren_top_menu" web_icon="cdn_pesantren,static/description/icon.png" />
 		<menuitem id="cdn_pesantren_sub_menu" name="Referensi" sequence="40" parent="cdn_pesantren_top_menu" web_icon="cdn_pesantren,static/description/icon.png" />
 		<menuitem id="cdn_pesantren_sub_aktivitas" name="Aktivitas" sequence="32" parent="cdn_pesantren_top_menu" web_icon="cdn_pesantren,static/description/icon.png" />
+		<menuitem id="cdn_pesantren_aktivitas_detail1" name="Kesantrian" sequence="33" parent="cdn_pesantren_sub_aktivitas" web_icon="cdn_pesantren,static/description/icon.png" />
+		<menuitem id="cdn_pesantren_aktivitas_detail2" name="Tahfidz/Tahsin" sequence="34" parent="cdn_pesantren_sub_aktivitas" web_icon="cdn_pesantren,static/description/icon.png" />
 		<menuitem id="cdn_pesantren_sub_konfig" name="Konfigurasi" sequence="45" parent="cdn_pesantren_top_menu" web_icon="cdn_pesantren,static/description/icon.png" />
+		<menuitem id="cdn_pesantren_konfig_detail1" name="Akademik" sequence="47" parent="cdn_pesantren_sub_konfig" web_icon="cdn_pesantren,static/description/icon.png" />
+		<menuitem id="cdn_pesantren_konfig_detail2" name="Kesantrian" sequence="48" parent="cdn_pesantren_sub_konfig" web_icon="cdn_pesantren,static/description/icon.png" />
+		<menuitem id="cdn_pesantren_konfig_detail3" name="Keuangan" sequence="49" parent="cdn_pesantren_sub_konfig" web_icon="cdn_pesantren,static/description/icon.png" />
+
 	</data>
 </odoo>

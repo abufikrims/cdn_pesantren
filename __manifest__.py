@@ -29,7 +29,7 @@ Information
 		"security/ir.model.access.csv",
 		"view/menu.xml",
 		"view/siswa.xml",
-		"view/propinsi.xml",
+		# "view/propinsi.xml",
 		"view/pekerjaan.xml",
 		"view/berkas_pendaftaran.xml",
 		"view/kelas.xml",
