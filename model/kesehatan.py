@@ -7,7 +7,7 @@ class kesehatan(models.Model):
 
     _name = "cdn.kesehatan"
     name = fields.Char( required=True, string="Name", readonly=True, help="", default="Auto")
-    tgl_periksa = fields.Date( string="Tgl periksa",  help="")
+    tgl_periksa = fields.Date( string="Tgl periksa", default=fields.Date.context_today,  help="")
     keluhan = fields.Text( string="Keluhan",  help="")
     obat = fields.Text( string="Obat",  help="")
     diperiksa_oleh = fields.Char( string="Diperiksa oleh",  help="")

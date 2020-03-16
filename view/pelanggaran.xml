@@ -11,11 +11,11 @@
                 <tree string="Pelanggaran">
                     <field name="name" />
                     <field name="tgl_pelanggaran" />
+                    <field name="siswa_id" />
+                    <field name="deskripsi" />
                     <field name="diperiksa_oleh" />
                     <field name="poin" />
-                    <field name="deskripsi" />
                     <field name="tindakan_id" />
-                    <field name="siswa_id" />
                 </tree>
             </field>
         </record>

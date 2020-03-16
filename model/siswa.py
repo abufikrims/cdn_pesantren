@@ -91,7 +91,10 @@ class siswa(models.Model):
     image = fields.Binary( string="Foto",  help="")
 
 
-    propinsi_id = fields.Many2one(comodel_name="cdn.propinsi",  string="Propinsi",  help="")
+    propinsi_id = fields.Many2one(comodel_name="cdn.ref_propinsi",  string="Propinsi",  help="")
+    kota_id = fields.Many2one(comodel_name="cdn.ref_kota", domain="[('propinsi_id', '=?', propinsi_id)]", string="Kabupaten/Kota",  help="    ")
+    kecamatan_id = fields.Many2one(comodel_name="cdn.ref_kecamatan", domain="[('kota_id', '=?', kota_id)]",  string="Kecamatan",  help="")
+    kelurahan_id = fields.Many2one(comodel_name="cdn.ref_desa", domain="[('kecamatan_id', '=?', kecamatan_id)]", string="Des/Kelurahan",  help="")
     ayah_pekerjaan_id = fields.Many2one(comodel_name="cdn.pekerjaan",  string="Pekerjaan",  help="")
     ibu_pekerjaan_id = fields.Many2one(comodel_name="cdn.pekerjaan",  string="Pekerjaan",  help="")
     wali_pekerjaan_id = fields.Many2one(comodel_name="cdn.pekerjaan",  string="Pekerjaan",  help="")
@@ -165,7 +168,24 @@ class siswa(models.Model):
         count = self.env['cdn.pembayaran_siswa'].search_count([('siswa_id','=', self.id)])
         self.keuangan_count = count
 
+    def open_prestasi(self):
+        return  {
+            'name': _('Prestasi'),
+            'domain': [('siswa_id','=', self.id)],
+            'view_type': 'form',
+            'res_model': 'cdn.prestasi_siswa',
+            'view_id': False,
+            'view_mode': 'tree,form',
+            'type': 'ir.actions.act_window'
+
+        }
+
+    def get_prestasi_count(self):
+        count = self.env['cdn.prestasi_siswa'].search_count([('siswa_id','=', self.id)])
+        self.prestasi_count = count        
+
     perijinan_count = fields.Integer(string='Perijinan', compute='get_perijinan_count')
     kesehatan_count = fields.Integer(string='Kesehatan', compute='get_kesehatan_count')
     pelanggaran_count = fields.Integer(string='Pelanggaran', compute='get_pelanggaran_count')
     keuangan_count = fields.Integer(string='Keuangan', compute='get_keuangan_count')
+    prestasi_count = fields.Integer(string='Prestasi', compute='get_prestasi_count')

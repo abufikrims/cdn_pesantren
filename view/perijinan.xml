@@ -10,15 +10,14 @@
             <field name="arch" type="xml">
                 <tree string="Perijinan">
                     <field name="name" />
-                    <field name="siswa_id" />
                     <field name="tgl_ijin" />
-                    <field name="lama_ijin" />
-                    <field name="state" />
-                    <field name="penjemput" />
+                    <field name="siswa_id" />
                     <field name="keperluan" />
+                    <field name="lama_ijin" />
+                    <field name="state" string="Status"/>
+                    <field name="penjemput" />
                     <field name="tgl_kembali" />
                     <field name="catatan" />
-
                 </tree>
             </field>
         </record>
@@ -31,10 +30,14 @@
             <field name="arch" type="xml">
                 <form string="Perijinan">
                     <header>
-                        <!--button string="Confirm" type="object" name="action_confirm" states="draft" /-->
-                        <!--button string="Mark as Done" type="object" name="action_done" states="confirmed" /-->
+                        <button string="Ajukan Ijin" type="object" name="action_confirm" state="Draft" attrs="{'invisible': [('state', 'in', ['Draft','Approved','Rejected','Permission'])]}" />
+                        <button string="Ijin Disetujui" type="object" name="action_approved" state="Approved" attrs="{'invisible': [('state', 'not in', ['Draft'])]}" />
+                        <button string="Ijin Ditolak" type="object" name="action_rejected" state="Rejected" attrs="{'invisible': [('state', 'not in', ['Draft'])]}" />
+                        <button string="Santri Status Ijin" type="object" name="action_permission" state="Permission" attrs="{'invisible': [('state', 'not in', ['Approved'])]}" />
                         <!--button string="Reset to Draft" type="object" name="action_draft" states="confirmed,done" /-->
-                        <field name="state" widget="statusbar" />
+                        <!-- <button name="action_perijinan_draft" string="Ajukan Ijin" type="object" states="Draft" class="btn-primary"/>
+                        <button name="action_perijinan_tolak" id="action_tolak" string="Ijin Ditolak" class="btn-primary" type="object" attrs="{'invisible': [('state', 'not in', ['Rejected'])]}"/> -->
+                        <field name="state" widget="statusbar" statusbar_visible="Draft,Approved,Permission" />
                     </header>
                     <sheet>
                         <div class="oe_button_box" name="button_box">
@@ -44,21 +47,23 @@
                             <!--/button-->
                         </div>
                         <div class="oe_title">
-                            <label for="name" class="oe_edit_only" string="Perijinan Name"/>
+                            <label for="name" class="oe_edit_only" string="No Referensi (Auto)"/>
                             <h1><field name="name"/></h1>
                         </div>
                         <group>
                             <group>
                                 <field name="tgl_ijin" />
-                                <field name="lama_ijin" />
-                                <field name="penjemput" />
-                                <field name="keperluan" />
-                                <field name="tgl_kembali" />
-                                <field name="catatan" />
+                                <field name="siswa_id" />
+                                <field name="penjemput" /> 
                             </group>
                             <group>
-                                <field name="siswa_id" />
+                                <field name="tgl_hrs_kembali" />
+                                <field name="lama_ijin" />
                             </group>
+                        </group>
+                        <group>
+                            <field name="keperluan" />
+                            <field name="catatan" />
                         </group>
                         <notebook>
                         </notebook>
@@ -73,23 +78,29 @@
             <field name="arch" type="xml">
                 <search string="Perijinan">
 
-                    <filter string="Name" name="filter_by_name" domain="[('name','=','')]" />
-                    <filter string="Tgl ijin" name="filter_by_tgl_ijin" domain="[('tgl_ijin','=','')]" />
-                    <filter string="Lama ijin" name="filter_by_lama_ijin" domain="[('lama_ijin','=','')]" />
-                    <filter string="State" name="filter_by_state" domain="[('state','=','')]" />
-                    <filter string="Penjemput" name="filter_by_penjemput" domain="[('penjemput','=','')]" />
-                    <filter string="Keperluan" name="filter_by_keperluan" domain="[('keperluan','=','')]" />
-                    <filter string="Tgl kembali" name="filter_by_tgl_kembali" domain="[('tgl_kembali','=','')]" />
-                    <filter string="Catatan" name="filter_by_catatan" domain="[('catatan','=','')]" />
-                    <field name="name" select="True"/>
+                    <!-- <filter string="Name" name="filter_by_name" domain="[('name','=','')]" /> -->
+                    <filter string="Perijinan Hari ini" name="filter_by_tgl_ijin" 
+                        domain="[('tgl_ijin','&gt;=', datetime.datetime.combine(context_today(), datetime.time(0,0,0))), ('tgl_ijin','&lt;=', datetime.datetime.combine(context_today(), datetime.time(23,59,59)))]" />
+                    <filter string="Lama Ijin >3 hari" name="filter_by_lama_ijin" domain="[('lama_ijin','>=','3')]" /> 
+                    <filter string="Pengajuan" name="filter_by_state" domain="[('state','=','Draft')]" />
+                    <filter string="Disetujui" name="filter_by_state" domain="[('state','=','Approved')]" />
+                    <filter string="Ditolak" name="filter_by_state" domain="[('state','=','Rejected')]" />
+                    <filter string="Santri Keluar" name="filter_by_state" domain="[('state','=','Permission')]" />
+                    <filter string="Santri Kembali" name="filter_by_state" domain="[('state','=','Return')]" />
+
+                    <!-- <filter string="Penjemput" name="filter_by_penjemput" domain="[('penjemput','=','')]" /> -->
+                    <!-- <filter string="Keperluan" name="filter_by_keperluan" domain="[('keperluan','=','')]" /> -->
+                    <!-- <filter string="Tgl kembali" name="filter_by_tgl_kembali" domain="[('tgl_kembali','=','')]" /> -->
+                    <!-- <filter string="Catatan" name="filter_by_catatan" domain="[('catatan','=','')]" /> -->
+                    <!-- <field name="name" select="True"/> -->
                     <field name="tgl_ijin" select="True"/>
                     <field name="lama_ijin" select="True"/>
                     <field name="state" select="True"/>
-                    <field name="penjemput" select="True"/>
-                    <field name="keperluan" select="True"/>
-                    <field name="tgl_kembali" select="True"/>
-                    <field name="catatan" select="True"/>
-                    <field name="siswa_id" select="True"/>
+                    <!-- <field name="penjemput" select="True"/> -->
+                    <!-- <field name="keperluan" select="True"/> -->
+                    <!-- <field name="tgl_kembali" select="True"/> -->
+                    <!-- <field name="catatan" select="True"/> -->
+                    <!-- <field name="siswa_id" select="True"/> -->
                     <group string="Group By..">
                         <filter string="Siswa" domain="[]" name="group_by_siswa_id" context="{'group_by':'siswa_id'}"/>
                     </group>
@@ -169,6 +180,13 @@
                 Click the Create button to add a new Perijinan
                 </p>
             </field>
+        </record>
+
+       <record id="seq_perijinan_new" model="ir.sequence">
+            <field name="name">No Referensi</field>
+            <field name="code">cdn.perijinan</field>
+            <field name="prefix">KI%(y)s%(month)s</field>
+            <field name="padding">5</field>
         </record>
 
         <menuitem id="menu_cdn_perijinan" name="Perijinan" parent="cdn_pesantren_sub_aktivitas" action="action_cdn_perijinan" sequence="20"/>

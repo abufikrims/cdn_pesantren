@@ -6,8 +6,8 @@ from odoo import models, fields, api, _
 class pelanggaran(models.Model):
 
     _name = "cdn.pelanggaran"
-    name = fields.Char(string="No. Referensi",  help="", readonly=True, default='/')
-    tgl_pelanggaran = fields.Date( string="Tgl pelanggaran",  help="")
+    name = fields.Char(string="No. Referensi",  help="", readonly=True, default='Auto')
+    tgl_pelanggaran = fields.Date( string="Tgl pelanggaran", default=fields.Date.context_today, help="")
     diperiksa_oleh = fields.Char( string="Diperiksa oleh",  help="")
     poin = fields.Integer( string="Poin",  help="")
     deskripsi = fields.Text( string="Deskripsi",  help="")

@@ -11,10 +11,11 @@
                 <tree string="Prestasi siswa">
                     <field name="name" />
                     <field name="tgl_prestasi" />
+                    <field name="siswa_id" />
                     <field name="tingkat_prestasi" />
                     <field name="juara_ke" />
                     <field name="jns_prestasi_id" />
-                    <field name="siswa_id" />
+                    <field name="keterangan" />
                 </tree>
             </field>
         </record>
@@ -39,18 +40,19 @@
                             <!--/button-->
                         </div>
                         <div class="oe_title">
-                            <label for="name" class="oe_edit_only" string="Prestasi siswa Name"/>
+                            <label for="name" class="oe_edit_only" string="No Referensi (AUTO)"/>
                             <h1><field name="name"/></h1>
                         </div>
                         <group>
                             <group>
                                 <field name="tgl_prestasi" />
+                                <field name="siswa_id" />
                                 <field name="tingkat_prestasi" />
-                                <field name="juara_ke" />
                             </group>
                             <group>
                                 <field name="jns_prestasi_id" />
-                                <field name="siswa_id" />
+                                <field name="juara_ke" />
+                                <field name="keterangan" />
                             </group>
                         </group>
                         <notebook>
@@ -66,16 +68,21 @@
             <field name="arch" type="xml">
                 <search string="Prestasi siswa">
 
-                    <filter string="Name" name="filter_by_name" domain="[('name','=','')]" />
-                    <filter string="Tgl prestasi" name="filter_by_tgl_prestasi" domain="[('tgl_prestasi','=','')]" />
-                    <filter string="Tingkat prestasi" name="filter_by_tingkat_prestasi" domain="[('tingkat_prestasi','=','')]" />
-                    <filter string="Juara ke" name="filter_by_juara_ke" domain="[('juara_ke','=','')]" />
-                    <field name="name" select="True"/>
-                    <field name="tgl_prestasi" select="True"/>
+                    <!-- <filter string="Name" name="filter_by_name" domain="[('name','=','')]" /> -->
+                    <!-- <filter string="Tgl prestasi" name="filter_by_tgl_prestasi" domain="[('tgl_prestasi','=','')]" /> -->
+                    <filter string="Tingkat Internasional" name="filter_by_tingkat_prestasi" domain="[('tingkat_prestasi','=','Internasional')]" />
+                    <filter string="Tingkat Nasional" name="filter_by_tingkat_prestasi" domain="[('tingkat_prestasi','=','Nasional')]" />
+                    <filter string="Tingkat Propinsi" name="filter_by_tingkat_prestasi" domain="[('tingkat_prestasi','=','Propinsi')]" />
+                    <filter string="Tingkat Kab/Kota" name="filter_by_tingkat_prestasi" domain="[('tingkat_prestasi','=','Kota')]" />
+                    <filter string="Tingkat Kecamatan" name="filter_by_tingkat_prestasi" domain="[('tingkat_prestasi','=','Kecamatan')]" />
+                    <filter string="Tingkat Lokal/Internal" name="filter_by_tingkat_prestasi" domain="[('tingkat_prestasi','=','Lokal')]" />
+                    <filter string="Juara ke 1,2,3" name="filter_by_juara_ke" domain="[('juara_ke','&lt;','4')]" />
+                    <!-- <field name="name" select="True"/> -->
+                    <!-- <field name="tgl_prestasi" select="True"/> -->
                     <field name="tingkat_prestasi" select="True"/>
                     <field name="juara_ke" select="True"/>
-                    <field name="jns_prestasi_id" select="True"/>
-                    <field name="siswa_id" select="True"/>
+                    <!-- <field name="jns_prestasi_id" select="True"/> -->
+                    <!-- <field name="siswa_id" select="True"/> -->
                     <group string="Group By..">
                         <filter string="Jns prestasi" domain="[]" name="group_by_jns_prestasi_id" context="{'group_by':'jns_prestasi_id'}"/>
                         <filter string="Siswa" domain="[]" name="group_by_siswa_id" context="{'group_by':'siswa_id'}"/>
@@ -155,6 +162,13 @@
             </field>
         </record>
 
+        <!-- Sequence No Referensi Prestasi -->
+        <record id="seq_prestasi_new" model="ir.sequence">
+            <field name="name">No Referensi</field>
+            <field name="code">cdn.prestasi_siswa</field>
+            <field name="prefix">PR</field>
+            <field name="padding">5</field>
+        </record>
         <menuitem id="menu_cdn_prestasi_siswa" name="Prestasi siswa" parent="cdn_pesantren_sub_aktivitas" action="action_cdn_prestasi_siswa" sequence="20"/>
     </data>
 </odoo>
