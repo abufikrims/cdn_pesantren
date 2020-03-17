@@ -11,12 +11,12 @@
                 <tree string="Tahfidz siswa">
                     <field name="name" />
                     <field name="tgl_tahfidz" />
-                    <field name="tambah_halaman" />
-                    <field name="murojaah_halaman" />
-                    <field name="deskripsi" />
-                    <field name="status_hafalan_id" />
                     <field name="siswa_id" />
                     <field name="ustadz_id" />
+                    <field name="tambah_halaman" />
+                    <field name="murojaah_halaman" />
+                    <field name="status_hafalan_id" />
+                    <!-- <field name="deskripsi" /> -->
                 </tree>
             </field>
         </record>
@@ -41,7 +41,7 @@
                             <!--/button-->
                         </div>
                         <div class="oe_title">
-                            <label for="name" class="oe_edit_only" string="Tahfidz siswa Name"/>
+                            <label for="name" class="oe_edit_only" string="No Referensi (AUTO)"/>
                             <h1><field name="name"/></h1>
                         </div>
                         <group>
@@ -75,12 +75,12 @@
                     <filter string="Tambah halaman" name="filter_by_tambah_halaman" domain="[('tambah_halaman','=','')]" />
                     <filter string="Murojaah halaman" name="filter_by_murojaah_halaman" domain="[('murojaah_halaman','=','')]" />
                     <filter string="Deskripsi" name="filter_by_deskripsi" domain="[('deskripsi','=','')]" />
-                    <field name="name" select="True"/>
+                    <!-- <field name="name" select="True"/>
                     <field name="tgl_tahfidz" select="True"/>
                     <field name="tambah_halaman" select="True"/>
                     <field name="murojaah_halaman" select="True"/>
                     <field name="deskripsi" select="True"/>
-                    <field name="status_hafalan_id" select="True"/>
+                    <field name="status_hafalan_id" select="True"/> -->
                     <field name="siswa_id" select="True"/>
                     <field name="ustadz_id" select="True"/>
                     <group string="Group By..">
@@ -164,6 +164,13 @@
                 Click the Create button to add a new Tahfidz siswa
                 </p>
             </field>
+        </record>
+        <!-- Sequence No Referensi Tahfidz -->
+        <record id="seq_tahfidz_new" model="ir.sequence">
+            <field name="name">No Referensi</field>
+            <field name="code">cdn.tahfidz_siswa</field>
+            <field name="prefix">TF</field>
+            <field name="padding">5</field>
         </record>
 
         <menuitem id="menu_cdn_tahfidz_siswa" name="Tahfidz siswa" parent="cdn_pesantren_aktivitas_detail2" action="action_cdn_tahfidz_siswa" sequence="20"/>

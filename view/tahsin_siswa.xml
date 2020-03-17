@@ -11,11 +11,12 @@
                 <tree string="Tahsin siswa">
                     <field name="name" />
                     <field name="tgl_tahsin" />
+                    <field name="siswa_id" />
                     <field name="tahsin_halaman" />
                     <field name="tahsin_jilid" />
+                     <field name="ustadz_id" />
                     <field name="nilai" />
                     <field name="deskripsi" />
-                    <field name="siswa_id" />
                 </tree>
             </field>
         </record>
@@ -40,7 +41,7 @@
                             <!--/button-->
                         </div>
                         <div class="oe_title">
-                            <label for="name" class="oe_edit_only" string="Tahsin siswa Name"/>
+                            <label for="name" class="oe_edit_only" string="No Referensi (AUTO)"/>
                             <h1><field name="name"/></h1>
                         </div>
                         <group>
@@ -53,6 +54,7 @@
                             </group>
                             <group>
                                 <field name="siswa_id" />
+                                <field name="ustadz_id" />
                             </group>
                         </group>
                         <notebook>
@@ -74,12 +76,12 @@
                     <filter string="Tahsin jilid" name="filter_by_tahsin_jilid" domain="[('tahsin_jilid','=','')]" />
                     <filter string="Nilai" name="filter_by_nilai" domain="[('nilai','=','')]" />
                     <filter string="Deskripsi" name="filter_by_deskripsi" domain="[('deskripsi','=','')]" />
-                    <field name="name" select="True"/>
+                    <!-- <field name="name" select="True"/>
                     <field name="tgl_tahsin" select="True"/>
                     <field name="tahsin_halaman" select="True"/>
                     <field name="tahsin_jilid" select="True"/>
                     <field name="nilai" select="True"/>
-                    <field name="deskripsi" select="True"/>
+                    <field name="deskripsi" select="True"/> -->
                     <field name="siswa_id" select="True"/>
                     <group string="Group By..">
                         <filter string="Siswa" domain="[]" name="group_by_siswa_id" context="{'group_by':'siswa_id'}"/>
@@ -160,7 +162,13 @@
                 </p>
             </field>
         </record>
-
+        <!-- Sequence No Referensi Tahsin -->
+        <record id="seq_tahsin_new" model="ir.sequence">
+            <field name="name">No Referensi</field>
+            <field name="code">cdn.tahsin_siswa</field>
+            <field name="prefix">TS</field>
+            <field name="padding">5</field>
+        </record>
         <menuitem id="menu_cdn_tahsin_siswa" name="Tahsin siswa" parent="cdn_pesantren_aktivitas_detail2" action="action_cdn_tahsin_siswa" sequence="20"/>
     </data>
 </odoo>
