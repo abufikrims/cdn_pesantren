@@ -92,7 +92,7 @@
                     <field name="foto" />
                     <field name="propinsi_id" />
                     <field name="ayah_pekerjaan_id" /> -->
-                    <field name="kelas_paralel_id" />
+                    <!-- <field name="kelas_paralel_id" /> -->
                 </tree>
             </field>
         </record>
@@ -160,7 +160,7 @@
                             <field name="berat_badan" placeholder="berat badan (KG)"/>
                             <field name="agama_siswa" />
 
-                            <field name="kelas_paralel_id" />
+                            <!-- <field name="kelas_paralel_id" /> -->
                             <field name="berkas_ids" widget="many2many_tags"/>
                         </group>
                         <separator string="Data Untuk Kelas Tahfidz - (Diisi jika mendaftar di kelas Tahfidz)" />
@@ -295,7 +295,6 @@
             <field name="model">cdn.siswa</field>
             <field name="arch" type="xml">
                 <search string="Siswa">
-
                     <filter string="Name" name="filter_by_name" domain="[('name','=','')]" />
                     <filter string="No daftar" name="filter_by_no_daftar" domain="[('no_daftar','=','')]" />
                     <filter string="Tgl daftar" name="filter_by_tgl_daftar" domain="[('tgl_daftar','=','')]" />
@@ -460,11 +459,11 @@
                     <!-- <field name="foto" select="True"/> -->
                     <field name="propinsi_id" select="True"/>
                     <field name="ayah_pekerjaan_id" select="True"/>
-                    <field name="kelas_paralel_id" select="True"/>
+                    <!-- <field name="kelas_paralel_id" select="True"/> -->
                     <group string="Group By..">
                         <filter string="Propinsi" domain="[]" name="group_by_propinsi_id" context="{'group_by':'propinsi_id'}"/>
                         <filter string="Ayah pekerjaan" domain="[]" name="group_by_ayah_pekerjaan_id" context="{'group_by':'ayah_pekerjaan_id'}"/>
-                        <filter string="Kelas paralel" domain="[]" name="group_by_kelas_paralel_id" context="{'group_by':'kelas_paralel_id'}"/>
+                        <!-- <filter string="Kelas paralel" domain="[]" name="group_by_kelas_paralel_id" context="{'group_by':'kelas_paralel_id'}"/> -->
                     </group>
                 </search>
             </field>
@@ -559,7 +558,7 @@
                     <!-- <field name="foto" /> -->
                     <field name="propinsi_id" />
                     <field name="ayah_pekerjaan_id" />
-                    <field name="kelas_paralel_id" />
+                    <!-- <field name="kelas_paralel_id" /> -->
                     <templates>
                         <t t-name="kanban-box">
                             <div class="oe_kanban_global_click o_kanban_record_has_image_fill">

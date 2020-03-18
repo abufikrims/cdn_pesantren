@@ -98,7 +98,7 @@ class siswa(models.Model):
     ayah_pekerjaan_id = fields.Many2one(comodel_name="cdn.pekerjaan",  string="Pekerjaan",  help="")
     ibu_pekerjaan_id = fields.Many2one(comodel_name="cdn.pekerjaan",  string="Pekerjaan",  help="")
     wali_pekerjaan_id = fields.Many2one(comodel_name="cdn.pekerjaan",  string="Pekerjaan",  help="")
-    kelas_paralel_id = fields.Many2one(comodel_name="cdn.kelas_paralel",  string="Kelas paralel",  help="")
+   # kelas_paralel_id = fields.Many2one(comodel_name="cdn.kelas_paralel",  string="Kelas paralel",  help="")
     keuangan_siswa_ids = fields.One2many(comodel_name="cdn.keuangan_siswa",  inverse_name="siswa_id",  string="Keuangan Siswa",  help="")
     berkas_ids = fields.Many2many(comodel_name="cdn.berkas_pendaftaran",  string="Berkas Pendaftaran",  help="")
 

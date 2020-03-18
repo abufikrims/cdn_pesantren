@@ -3,11 +3,11 @@ from . import siswa
 from . import propinsi
 from . import pekerjaan
 from . import berkas_pendaftaran
-from . import kelas
+#from . import kelas
 from . import ustadz_wali
-from . import kelas_paralel
-from . import matpel
-from . import aspek_matpel
+#from . import kelas_paralel
+#from . import matpel
+#from . import aspek_matpel
 from . import kesehatan
 from . import pelanggaran
 from . import tindakan_hukuman
