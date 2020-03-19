@@ -16,9 +16,10 @@ class tahfidz_siswa(models.Model):
 
     status_hafalan_id = fields.Many2one(comodel_name="cdn.status_hafalan",  string="Status hafalan",  help="")
     siswa_id = fields.Many2one(comodel_name="cdn.siswa",  required=True, string="Siswa",  help="")
-    ustadz_id = fields.Many2one(comodel_name="res.partner",  string="Ustadz",  help="")
+    ustadz_id = fields.Many2one(comodel_name="hr.employee",  string="Ustadz",  help="")
 
     @api.model
     def create(self, vals):
         vals['name'] = self.env['ir.sequence'].next_by_code('cdn.tahfidz_siswa')
         return super(tahfidz_siswa, self).create(vals)
+

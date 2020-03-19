@@ -4,7 +4,8 @@
 	"name": "Cdn pesantren",
 	"version": "1.0", 
 	"depends": [
-		'base'
+		'base',
+		'hr'
 	],
 	"author": "Akhmad D. Sembiring [vitraining.com]",
 	"category": "Utility",

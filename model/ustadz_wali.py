@@ -5,8 +5,8 @@ from odoo import models, fields, api, _
 
 class ustadz_wali(models.Model):
 
-    _name = "res.partner"
+    _name = "hr.employee"
 
-    _inherit = "res.partner"
+    _inherit = "hr.employee"
 
 

@@ -15,7 +15,8 @@ class tahsin_siswa(models.Model):
 
 
     siswa_id = fields.Many2one(comodel_name="cdn.siswa", required=True, string="Siswa",  help="")
-    ustadz_id = fields.Many2one(comodel_name="res.partner",  string="Ustadz",  help="")
+    ustadz_id = fields.Many2one(comodel_name="hr.employee",  string="Ustadz",  help="", domain=[('is_tahfidz', '=', True)])
+
 
     @api.model
     def create(self, vals):

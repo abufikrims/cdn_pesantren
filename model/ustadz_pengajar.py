@@ -4,11 +4,12 @@
 from odoo import models, fields, api, _
 
 class ustadz_pengajar(models.Model):
-    """inherit res.partner"""
+    """inherit hr.employee"""
 
-    _name = "res.partner"
+    _name = "hr.employee"
 
-    _inherit = "res.partner"
-    is_tahfidz = fields.Boolean( string="Is tahfidz",  help="")
+    _inherit = "hr.employee"
+    is_tahfidz = fields.Boolean( string="Ustadz Tahfidz ?",  help="")
+    is_ustadz  = fields.Boolean( string="Ustadz Akademik ?",  help="")
 
 
